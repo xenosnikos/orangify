@@ -18,9 +18,6 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="45*" />
@@ -30,54 +27,50 @@
         <Label Content="Orangify" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.021,0.156" Grid.ColumnSpan="3" Height="25" Width="217" Margin="10,10,0,0"/>
         <Label Content="Song Title" Grid.Column="4" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="68" Width="287" FontSize="48"/>
         <Label Content="Artist - Album" Grid.Column="4" HorizontalAlignment="Left" Margin="10,83,-6,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="4" Width="297" Height="67" FontSize="24"/>
-        <Slider
-  TickFrequency="5"
-  Orientation="Horizontal"
-  Minimum="1"
-  Maximum="50"
-  Value="25" Grid.ColumnSpan="6" Margin="42,232,24.667,10" Grid.Row="1" />
+        <ProgressBar
+  Value="25"
+  Height="Auto" Grid.ColumnSpan="7" Margin="27,208,30.667,42" Grid.Row="1" />
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="27,21,25,21" Grid.Row="2">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="27,10,25,32" Grid.Row="2">
             <materialDesign:PackIcon
             Kind="SkipPrevious" Height="38" Width="22" />
         </Button>
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="1" Margin="26,21" Grid.Row="2">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="1" Margin="25,10,27,32" Grid.Row="2">
             <materialDesign:PackIcon
             Kind="Play" />
         </Button>
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="2" Margin="27,21,25,21" Grid.Row="2">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="2" Margin="26,10,26,32" Grid.Row="2">
             <materialDesign:PackIcon
             Kind="Pause" />
         </Button>
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="25,21,27,21" Grid.Row="2" Grid.Column="3">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="26,10,26,32" Grid.Row="2" Grid.Column="3">
             <materialDesign:PackIcon
             Kind="SkipNext" Height="38" Width="22" />
         </Button>
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="42,21,67,21" Grid.Row="2" Grid.Column="5">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="115,10,122,32" Grid.Row="2" Grid.Column="5">
             <materialDesign:PackIcon
             Kind="Star" Height="38" Width="22" />
         </Button>
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="147,21,10,21" Grid.Row="2" Grid.Column="5" RenderTransformOrigin="-1.097,0.565">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="209,10,22,32" Grid.Row="2" Grid.Column="5" RenderTransformOrigin="-1.097,0.565">
             <materialDesign:PackIcon
             Kind="PlaylistAdd" Height="38" Width="22" />
         </Button>
-        <Image Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
     </Grid>
 </Window>
