@@ -1,0 +1,49 @@
+﻿<Window x:Class="Orangify.Equalizer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Orangify"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Title="Equalizer" Height="450" Width="600" MinHeight="450" MinWidth="600" ResizeMode="NoResize" >
+    <Grid>
+        <Slider
+  TickFrequency="25"
+  TickPlacement="TopLeft"
+  Orientation="Vertical"
+  Minimum="1"
+  Maximum="50"
+  IsEnabled="False" Margin="51,31,492.6,81" />
+        <Button
+          Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="PRESETS" Margin="51,365,444.6,23" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="549,2,9.6,28" Width="35" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="514,2,44.6,28" Width="35" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="478,2,79.6,28" Width="36" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="442,2,115.6,28" Width="36" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="406,2,151.6,28" Width="36" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="370,2,187.6,28" Width="36" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="334,2,223.6,28" Width="36" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="298,2,259.6,28" Width="36" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="267,2,290.6,28" Width="36" />
+        <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="231,2,326.6,28" Width="36" />
+        <Label Content="60hz" HorizontalAlignment="Left" Margin="231,392,0,0" VerticalAlignment="Top" Width="36" FontSize="8"/>
+        <Label Content="170hz" HorizontalAlignment="Left" Margin="267,392,0,0" VerticalAlignment="Top" Width="31" FontSize="8"/>
+        <Label Content="310hz" HorizontalAlignment="Left" Margin="298,392,0,0" VerticalAlignment="Top" Width="36" FontSize="8"/>
+        <Label Content="600hz" HorizontalAlignment="Left" Margin="334,392,0,0" VerticalAlignment="Top" Width="36" FontSize="8"/>
+        <Label Content="1Khz" HorizontalAlignment="Left" Margin="370,392,0,0" VerticalAlignment="Top" Width="36" FontSize="8"/>
+        <Label Content="5Khz" HorizontalAlignment="Left" Margin="406,392,0,0" VerticalAlignment="Top" Width="36" FontSize="8"/>
+        <Label Content="6Khz" HorizontalAlignment="Left" Margin="442,392,0,0" VerticalAlignment="Top" Width="36" FontSize="8"/>
+        <Label Content="12Khz" HorizontalAlignment="Left" Margin="478,392,0,0" VerticalAlignment="Top" Width="36" FontSize="8"/>
+        <Label Content="14Khz" HorizontalAlignment="Left" Margin="514,392,0,0" VerticalAlignment="Top" Width="35" FontSize="8"/>
+        <Label Content="16Khz" HorizontalAlignment="Left" Margin="549,392,0,0" VerticalAlignment="Top" Width="35" FontSize="8"/>
+        <Label Content="+ 0 db" HorizontalAlignment="Left" Margin="106,171,0,0" VerticalAlignment="Top" Width="56"/>
+        <Label Content="+ 12 db" HorizontalAlignment="Left" Margin="106,21,0,0" VerticalAlignment="Top"/>
+        <Label Content="- 12 db" HorizontalAlignment="Left" Margin="106,322,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="-0.157,0.39"/>
+        <Label Content="PREAMP" HorizontalAlignment="Left" Margin="69,8,0,0" VerticalAlignment="Top" Width="37" Height="18" FontSize="6"/>
+    </Grid>
+</Window>
