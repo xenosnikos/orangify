@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Orangify"
+        xmlns:local="clr-namespace:Orangify" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -12,6 +12,12 @@
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Button
+          Style="{StaticResource MaterialDesignIconButton}"
+          ToolTip="MaterialDesignIconButton"
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+            <materialDesign:PackIcon
+            Kind="Pause" />
+        </Button>
     </Grid>
 </Window>
