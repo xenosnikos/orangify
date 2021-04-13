@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Orangify
 {
@@ -19,12 +22,12 @@ namespace Orangify
     /// </summary>
     public partial class Settings : Window
     {
-        List<string> pathList = new List<string>();
+        //TODO PHIL: make pathlist persistent
+        //ObservableCollection<string> pathList = new ObservableCollection<string>();
+        public List<string> pathList = new List<string>();
         public Settings()
         {
             InitializeComponent();
-            //TODO PHIL: Make pathlist persistent
-            //lvSettingsPaths.ItemsSource = pathList;
         }
 
         private void SettingsWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -49,8 +52,15 @@ namespace Orangify
                 //TODO: create object for songs so that it can be added to the listview in the settings menu
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                    lvSettingsPaths.Items.Add(dialog.SelectedPath);
-                    lvSettingsPaths.Items.Refresh();
+                    try
+                    {
+                        lvSettingsPaths.Items.Add(dialog.SelectedPath);
+                        lvSettingsPaths.Items.Refresh();
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        Console.WriteLine("Error loading path list: " + ex.Message);
+                    }
                 }
             }
 
