@@ -19,7 +19,7 @@
             <ComboBoxItem>Francais</ComboBoxItem>
         </ComboBox>
         <Label Content="Library Source" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Height="41" Width="140" FontSize="18"/>
-        <ListView HorizontalAlignment="Left" Height="100" Margin="10,206,0,0" VerticalAlignment="Top" Width="772" Background="#FFE4E4E4">
+        <ListView Name="lvSettingsPaths" HorizontalAlignment="Left" Height="100" Margin="10,206,0,0" VerticalAlignment="Top" Width="772" Background="#FFE4E4E4">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
