@@ -19,9 +19,12 @@ namespace Orangify
     /// </summary>
     public partial class Settings : Window
     {
+        List<string> pathList = new List<string>();
         public Settings()
         {
             InitializeComponent();
+            //TODO PHIL: Make pathlist persistent
+            //lvSettingsPaths.ItemsSource = pathList;
         }
 
         private void SettingsWindow_MouseDown(object sender, MouseButtonEventArgs e)
