@@ -43,13 +43,14 @@ namespace Orangify
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
                 System.Windows.Forms.DialogResult result = dialog.ShowDialog();
-
                 //TODO: create object for songs so that it can be added to the listview in the settings menu
-                SourceFolder source = new SourceFolder { Path = result.ToString() };
-                lvSettingsPaths.Items.Add(source);
-                lvSettingsPaths.Items.Refresh();
-                //DialogResult = result;
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    lvSettingsPaths.Items.Add(dialog.SelectedPath);
+                    lvSettingsPaths.Items.Refresh();
+                }
             }
+
         }
     }
 }
