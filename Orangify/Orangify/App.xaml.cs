@@ -13,5 +13,13 @@ namespace Orangify
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            Equalizer equalizer = new Equalizer();
+            Library library = new Library();
+
+            equalizer.Show();
+            library.Show();
+        }
     }
 }
