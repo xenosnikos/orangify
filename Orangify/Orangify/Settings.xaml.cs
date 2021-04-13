@@ -23,5 +23,30 @@ namespace Orangify
         {
             InitializeComponent();
         }
+
+        private void SettingsWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void SettingsAcceptBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        //TODO: Implement library folder selection
+        private void SettingsAddFolderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
+            {
+                System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+
+                //TODO: create object for songs so that it can be added to the listview in the settings menu
+                //DialogResult = result;
+            }
+        }
     }
 }

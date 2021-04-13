@@ -23,5 +23,13 @@ namespace Orangify
         {
             InitializeComponent();
         }
+
+        private void EQWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }

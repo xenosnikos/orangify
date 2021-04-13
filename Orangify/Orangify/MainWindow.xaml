@@ -10,7 +10,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="MainWindow" Height="462" Width="700" ResizeMode="NoResize" WindowStyle="None">
+        Title="MainWindow" Height="462" Width="700" ResizeMode="NoResize" WindowStyle="None" MouseDown="MainWindow_MouseDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />

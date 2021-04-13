@@ -18,8 +18,17 @@ namespace Orangify
             Equalizer equalizer = new Equalizer();
             Library library = new Library();
 
-            equalizer.Show();
-            library.Show();
+            try
+            {
+                equalizer.Top = MainWindow.Top;
+                equalizer.Show();
+                library.Top = MainWindow.Top;
+                library.Show();
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new Exception("Error initializing main windows: " + ex.Message);
+            }
         }
     }
 }

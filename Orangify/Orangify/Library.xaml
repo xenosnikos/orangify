@@ -10,7 +10,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Library" Height="450" Width="1300">
+        Title="Library" Height="450" Width="1400" ResizeMode="NoResize">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File"
@@ -18,9 +18,9 @@
                 Background="{DynamicResource MaterialDesignPaper}"
                 TextElement.FontWeight="Medium"
                 TextElement.FontSize="14">
-                <MenuItem Header="_Settings"/>
+                <MenuItem Header="_Settings" Click="miSettings_Click"/>
                 <Separator />
-                <MenuItem Header="_Exit"/>
+                <MenuItem Header="_Exit" Click="miExit_Click"/>
             </MenuItem>
         </Menu>
         <StatusBar 

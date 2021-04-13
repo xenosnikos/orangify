@@ -10,7 +10,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Settings" Height="376.86" Width="800" ResizeMode="NoResize" WindowStyle="None">
+        Title="Settings" Height="376.86" Width="800" ResizeMode="NoResize" WindowStyle="None" MouseDown="SettingsWindow_MouseDown" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Settings" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="41" Width="124" FontSize="26"/>
         <Label Content="Language" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Height="41" Width="100" FontSize="18"/>
@@ -26,7 +26,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Add Folder to Library" HorizontalAlignment="Left" Margin="602,165,0,0" VerticalAlignment="Top" Width="180"/>
-        <Button Content="Accept" HorizontalAlignment="Left" Margin="312,335,0,0" VerticalAlignment="Top" Width="180"/>
+        <Button Content="Add Folder to Library" HorizontalAlignment="Left" Margin="602,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFolderBtn_Click"/>
+        <Button Content="Accept" HorizontalAlignment="Left" Margin="312,335,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAcceptBtn_Click"/>
     </Grid>
 </Window>
