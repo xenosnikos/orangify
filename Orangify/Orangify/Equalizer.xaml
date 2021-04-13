@@ -10,7 +10,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Equalizer" Height="450" Width="600" MinHeight="450" MinWidth="600" ResizeMode="NoResize" >
+        Title="Equalizer" Height="450" Width="600" MinHeight="450" MinWidth="600" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
         <Slider
   TickFrequency="25"
