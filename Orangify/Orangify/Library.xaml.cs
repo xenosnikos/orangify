@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Orangify
 {
@@ -36,6 +37,14 @@ namespace Orangify
                     break;
                 case MessageBoxResult.No:
                     return;
+            }
+        }
+
+        private void Library_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

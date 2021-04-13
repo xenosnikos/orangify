@@ -15,20 +15,16 @@ namespace Orangify
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            Equalizer equalizer = new Equalizer();
-            Library library = new Library();
 
-            try
-            {
-                equalizer.Top = MainWindow.Top;
-                equalizer.Show();
-                library.Top = MainWindow.Top;
-                library.Show();
-            }
-            catch (InvalidOperationException ex)
-            {
-                throw new Exception("Error initializing main windows: " + ex.Message);
-            }
+            Equalizer EQWindow = new Equalizer();
+            EQWindow.Top = 20;
+            EQWindow.Left = 730;
+            EQWindow.Show();
+
+            Library LibraryWindow = new Library();
+            LibraryWindow.Top = 500;
+            LibraryWindow.Left = 20;
+            LibraryWindow.Show();
         }
     }
 }

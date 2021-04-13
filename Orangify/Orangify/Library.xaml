@@ -10,35 +10,35 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Library" Height="450" Width="1400" ResizeMode="NoResize">
+        Title="Library" Height="450" Width="1400" ResizeMode="NoResize" WindowStyle="None" MouseDown="Library_MouseDown">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File"
-                TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-                Background="{DynamicResource MaterialDesignPaper}"
-                TextElement.FontWeight="Medium"
-                TextElement.FontSize="14">
+                    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                    Background="{DynamicResource MaterialDesignPaper}"
+                    TextElement.FontWeight="Medium"
+                    TextElement.FontSize="14">
                 <MenuItem Header="_Settings" Click="miSettings_Click"/>
                 <Separator />
                 <MenuItem Header="_Exit" Click="miExit_Click"/>
             </MenuItem>
         </Menu>
         <StatusBar 
-            DockPanel.Dock="Bottom"
-            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-            Background="{DynamicResource MaterialDesignPaper}">
+                DockPanel.Dock="Bottom"
+                TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                Background="{DynamicResource MaterialDesignPaper}">
             <StatusBarItem>
                 <TextBlock Name="lblStatusCounter" Text="Total Number of Songs: "/>
             </StatusBarItem>
         </StatusBar>
-        <ListView Name="lvSongs" >
+        <ListView Name="lvSongs">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Song" Width="auto" DisplayMemberBinding="{Binding Song}" />
-                    <GridViewColumn Header="Artist" Width="auto"  DisplayMemberBinding="{Binding Artist}"/>
-                    <GridViewColumn Header="Album" Width="auto"  DisplayMemberBinding="{Binding Album}"/>
-                    <GridViewColumn Header="Year" Width="auto"  DisplayMemberBinding="{Binding Year}"/>
-                    <GridViewColumn Header="Length" Width="auto"  DisplayMemberBinding="{Binding Length}"/>
+                    <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Song}"/>
+                    <GridViewColumn Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist}"/>
+                    <GridViewColumn Header="Album" Width="300"  DisplayMemberBinding="{Binding Album}"/>
+                    <GridViewColumn Header="Year" Width="200"  DisplayMemberBinding="{Binding Year}"/>
+                    <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>
