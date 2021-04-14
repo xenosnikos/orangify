@@ -40,7 +40,10 @@ namespace Orangify
 
             if (settings.ShowDialog() == true)
             {
+                
                 Settings set = new Settings();
+                settings.lvSettingsPaths.ItemsSource = settings.pathList.ToList();
+                settings.lvSettingsPaths.Items.Refresh();
                 set.scanForSongFiles();
             }
             lvSongs.ItemsSource = Globals.ctx.Songs.ToList();

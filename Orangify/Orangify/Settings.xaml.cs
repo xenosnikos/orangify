@@ -24,6 +24,7 @@ namespace Orangify
     public partial class Settings : Window
     {        
         public List<string> pathList = new List<string>();
+        Sample_BASS.BassEngine engine;
         public Settings()
         {
             InitializeComponent();
@@ -40,6 +41,27 @@ namespace Orangify
 
         private void SettingsAcceptBtn_Click(object sender, RoutedEventArgs e)
         {
+            // engine.OpenFile(dial);
+            for (int i = 0; i < pathList.Count; i++)
+            {
+                Library lib = new Library();
+                var tfile = TagLib.File.Create(pathList[i]);
+                string title = tfile.Tag.Title;
+                string artist = tfile.Tag.Performers[0];
+                string album = tfile.Tag.Album;
+                TimeSpan length = tfile.Properties.Duration;
+                Console.WriteLine("Title: {0}, duration: {1}", title, length);
+                Artist artistObj = new Artist { Name = artist };
+                Album albumObj = new Album { Name = album };
+                Song song = new Song { Title = title,Artist= artistObj, Album = albumObj, Length = length };
+                lib.songList.Add(song);
+                tfile.Save();
+                Globals.ctx.Songs.Add(song);
+                Globals.ctx.SaveChanges();
+
+            }
+
+
             lvSettingsPaths.Items.Refresh();
             this.DialogResult = true;
             //this.Close();
@@ -83,7 +105,7 @@ namespace Orangify
         //TODO: Implement library folder selection
         private void SettingsAddFolderBtn_Click(object sender, RoutedEventArgs e)
         {
-            using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
+            using (var dialog = new System.Windows.Forms.OpenFileDialog())
             {
                 System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                 //TODO: create object for songs so that it can be added to the listview in the settings menu
@@ -91,7 +113,8 @@ namespace Orangify
                 {
                     try
                     {
-                        pathList.Add(dialog.SelectedPath);
+                        pathList.Add(dialog.FileName);
+
                         lvSettingsPaths.Items.Refresh();
                     }
                     catch (InvalidOperationException ex)
