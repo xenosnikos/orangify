@@ -209,7 +209,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Downloads\wpfsvl-master\wpfsvl-master\Source\WPFSoundVisualizationLibrary\WPFSoundVisualizationLib.csproj">
+    <ProjectReference Include="..\WPFSoundVisualizationLibrary\WPFSoundVisualizationLib.csproj">
       <Project>{90f96222-1c39-4a19-abe8-1b00fb330985}</Project>
       <Name>WPFSoundVisualizationLib</Name>
     </ProjectReference>
