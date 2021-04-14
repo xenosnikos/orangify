@@ -28,7 +28,9 @@ namespace Orangify
         public Settings()
         {
             InitializeComponent();
+
             lvSettingsPaths.ItemsSource = pathList;
+
         }
 
         private void SettingsWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -47,13 +49,16 @@ namespace Orangify
                 Library lib = new Library();
                 var tfile = TagLib.File.Create(pathList[i]);
                 string title = tfile.Tag.Title;
-                string artist = tfile.Tag.Performers[0];
+                string artist = tfile.Tag.FirstAlbumArtist;
                 string album = tfile.Tag.Album;
                 TimeSpan length = tfile.Properties.Duration;
                 Console.WriteLine("Title: {0}, duration: {1}", title, length);
                 Artist artistObj = new Artist { Name = artist };
                 Album albumObj = new Album { Name = album };
-                Song song = new Song { Title = title,Artist= artistObj, Album = albumObj, Length = length };
+                long yearReleased = tfile.Tag.Year;
+                
+                DateTime dt = DateTime.FromBinary(yearReleased);
+                Song song = new Song { Title = title,Artist= artistObj, Album = albumObj, Length = length, YearReleased=dt };
                 lib.songList.Add(song);
                 tfile.Save();
                 Globals.ctx.Songs.Add(song);
@@ -84,23 +89,7 @@ namespace Orangify
                     DirSearch(d);
                 }
             }
-            for (int i = 0; i < filesFound.Count; i++)
-            {
-                Library lib = new Library();
-                var tfile = TagLib.File.Create(pathList[i]);
-                string title = tfile.Tag.Title;
-                string artist = tfile.Tag.AlbumArtists[0];
-                string album = tfile.Tag.Album;
-                TimeSpan length = tfile.Properties.Duration;
-                Console.WriteLine("Title: {0}, duration: {1}", title, length);
-                Artist artistObj = new Artist { Name = artist };
-                Album albumObj = new Album { Name = album };
-                Song song = new Song {Title = title, Artist = artistObj, Album = albumObj, Length = length };
-
-                tfile.Save();
-                Globals.ctx.Songs.Add(song);
-                
-            }
+            
         }
         //TODO: Implement library folder selection
         private void SettingsAddFolderBtn_Click(object sender, RoutedEventArgs e)

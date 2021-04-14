@@ -31,14 +31,14 @@
                 <TextBlock Name="lblStatusCounter" Text="Total Number of Songs: "/>
             </StatusBarItem>
         </StatusBar>
-        <ListView Name="lvSongs">
+        <ListView Name="lvSongs" SelectionChanged="lvSongs_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>
-                    <GridViewColumn Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist}"/>
-                    <GridViewColumn Header="Album" Width="300"  DisplayMemberBinding="{Binding Album}"/>
-                    <GridViewColumn Header="Year" Width="200"/>
-                    <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
+                    <GridViewColumn Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist.Name}"/>
+                    <GridViewColumn Header="Album" Width="300"  DisplayMemberBinding="{Binding Album.Name}"/>
+                    <GridViewColumn Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased}"/>
+                    <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length.}"/>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>

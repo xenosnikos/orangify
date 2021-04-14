@@ -69,5 +69,10 @@ namespace Orangify
                 this.DragMove();
             }
         }
+
+        private void lvSongs_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }
