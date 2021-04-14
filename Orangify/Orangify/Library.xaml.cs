@@ -24,7 +24,7 @@ namespace Orangify
             {
                 InitializeComponent();
                 Globals.ctx = new orangifyEntities();
-                lvSongs.ItemsSource = Globals.ctx.Songs.ToList();
+                lvSongs.ItemsSource = Globals.ctx.Songs.ToList<Song>();
             }
             catch (Exception ex)
             {
@@ -46,7 +46,7 @@ namespace Orangify
                 settings.lvSettingsPaths.Items.Refresh();
                 set.scanForSongFiles();
             }
-            lvSongs.ItemsSource = Globals.ctx.Songs.ToList();
+            lvSongs.ItemsSource = Globals.ctx.Songs.ToList<Song>();
         }
 
         private void miExit_Click(object sender, RoutedEventArgs e)
