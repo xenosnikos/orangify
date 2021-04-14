@@ -8,6 +8,6 @@ namespace Orangify
 {
     public class Globals
     {
-        public static orangifyEntities ctx;
+        public static orangifyEntities1 ctx;
     }
 }

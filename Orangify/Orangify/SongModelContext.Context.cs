@@ -13,10 +13,10 @@ namespace Orangify
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class orangifyEntities : DbContext
+    public partial class orangifyEntities1 : DbContext
     {
-        public orangifyEntities()
-            : base("name=orangifyEntities")
+        public orangifyEntities1()
+            : base("name=orangifyEntities1")
         {
         }
     

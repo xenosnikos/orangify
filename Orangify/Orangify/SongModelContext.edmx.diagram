@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="002b9685afba4700be77850a1ff5b615" Name="Diagram1">
+      <Diagram DiagramId="110ccce11a494bdbabba4d0d077abbed" Name="Diagram1">
         <EntityTypeShape EntityType="orangifyModel.Album" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="orangifyModel.Artist" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="orangifyModel.Credit" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />

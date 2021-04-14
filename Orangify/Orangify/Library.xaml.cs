@@ -23,7 +23,7 @@ namespace Orangify
             try
             {
                 InitializeComponent();
-                Globals.ctx = new orangifyEntities();
+                Globals.ctx = new orangifyEntities1();
                 lvSongs.ItemsSource = Globals.ctx.Songs.ToList<Song>();
             }
             catch (Exception ex)
