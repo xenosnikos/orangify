@@ -20,14 +20,14 @@ namespace Orangify
     /// <summary>
     /// Interaction logic for Settings.xaml
     /// </summary>
+    /// 
     public partial class Settings : Window
-    {
-        //TODO PHIL: make pathlist persistent
-        //ObservableCollection<string> pathList = new ObservableCollection<string>();
+    {        
         public List<string> pathList = new List<string>();
         public Settings()
         {
             InitializeComponent();
+            lvSettingsPaths.ItemsSource = pathList;
         }
 
         private void SettingsWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -40,9 +40,46 @@ namespace Orangify
 
         private void SettingsAcceptBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            lvSettingsPaths.Items.Refresh();
+            this.DialogResult = true;
+            //this.Close();
         }
 
+        public void scanForSongFiles()
+        {
+            List<string> mediaExtensions = new List<string> { "mp3", "mp4" };
+            List<string> filesFound = new List<string>();
+
+            void DirSearch(string sDir)
+            {
+                foreach (string d in Directory.GetDirectories(sDir))
+                {
+                    foreach (string f in Directory.GetFiles(d, "*.*"))
+                    {
+                        if (mediaExtensions.Contains(System.IO.Path.GetExtension(f).ToLower()))
+                            filesFound.Add(f);
+                    }
+                    DirSearch(d);
+                }
+            }
+            for (int i = 0; i < filesFound.Count; i++)
+            {
+                Library lib = new Library();
+                var tfile = TagLib.File.Create(pathList[i]);
+                string title = tfile.Tag.Title;
+                string artist = tfile.Tag.AlbumArtists[0];
+                string album = tfile.Tag.Album;
+                TimeSpan length = tfile.Properties.Duration;
+                Console.WriteLine("Title: {0}, duration: {1}", title, length);
+                Artist artistObj = new Artist { Name = artist };
+                Album albumObj = new Album { Name = album };
+                Song song = new Song {Title = title, Artist = artistObj, Album = albumObj, Length = length };
+
+                tfile.Save();
+                Globals.ctx.Songs.Add(song);
+                
+            }
+        }
         //TODO: Implement library folder selection
         private void SettingsAddFolderBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -54,7 +91,7 @@ namespace Orangify
                 {
                     try
                     {
-                        lvSettingsPaths.Items.Add(dialog.SelectedPath);
+                        pathList.Add(dialog.SelectedPath);
                         lvSettingsPaths.Items.Refresh();
                     }
                     catch (InvalidOperationException ex)
