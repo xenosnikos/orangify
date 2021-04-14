@@ -15,7 +15,7 @@
         <Label Content="Settings" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="41" Width="124" FontSize="26"/>
         <Label Content="Language" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Height="41" Width="100" FontSize="18"/>
         <ComboBox HorizontalAlignment="Left" Margin="159,78,0,0" VerticalAlignment="Top" Width="180">
-            <ComboBoxItem>English</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">English</ComboBoxItem>
             <ComboBoxItem>Francais</ComboBoxItem>
         </ComboBox>
         <Label Content="Library Source" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Height="41" Width="140" FontSize="18"/>
