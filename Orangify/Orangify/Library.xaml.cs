@@ -15,16 +15,35 @@ namespace Orangify
     /// </summary>
     public partial class Library : Window
     {
+
+        Settings set = new Settings();
+        public List<Song> songList = new List<Song>();
         public Library()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                Globals.ctx = new orangifyEntities();
+                lvSongs.ItemsSource = Globals.ctx.Songs.ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error initializing components: " + ex.Message);
+            }
         }
 
         private void miSettings_Click(object sender, RoutedEventArgs e)
         {
             Settings settings = new Settings();
             settings.Owner = this;
-            settings.ShowDialog();
+            //settings.ShowDialog();
+
+            if (settings.ShowDialog() == true)
+            {
+                Settings set = new Settings();
+                set.scanForSongFiles();
+            }
+            lvSongs.ItemsSource = Globals.ctx.Songs.ToList();
         }
 
         private void miExit_Click(object sender, RoutedEventArgs e)

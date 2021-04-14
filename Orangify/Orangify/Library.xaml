@@ -34,10 +34,10 @@
         <ListView Name="lvSongs">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Song}"/>
+                    <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>
                     <GridViewColumn Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist}"/>
                     <GridViewColumn Header="Album" Width="300"  DisplayMemberBinding="{Binding Album}"/>
-                    <GridViewColumn Header="Year" Width="200"  DisplayMemberBinding="{Binding Year}"/>
+                    <GridViewColumn Header="Year" Width="200"/>
                     <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
                 </GridView>
             </ListView.View>
