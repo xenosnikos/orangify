@@ -43,7 +43,7 @@
             </ListView.View>
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Delete" Command="{Binding RemoveItem}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"/>
+                    <MenuItem Header="Delete" Command="{Binding RemoveItem}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" Click="miContextDelete_Click" />
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
