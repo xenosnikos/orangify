@@ -15,6 +15,7 @@ namespace Orangify
     /// </summary>
     public partial class Library : Window
     {
+        
 
         Settings set = new Settings();
         public List<Song> songList = new List<Song>();
@@ -72,7 +73,9 @@ namespace Orangify
 
         private void lvSongs_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            
+            Song song = (Song)lvSongs.SelectedItem;
+
+            engine.Play();
         }
     }
 }

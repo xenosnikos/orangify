@@ -22,6 +22,8 @@ namespace Orangify
         public MainWindow()
         {
             InitializeComponent();
+            Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
+            Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
         }
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
