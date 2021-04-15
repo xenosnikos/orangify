@@ -24,7 +24,7 @@ namespace Orangify
     public partial class Settings : Window
     {        
         public List<string> pathList = new List<string>();
-        Sample_BASS.BassEngine engine;
+       
         public Settings()
         {
             InitializeComponent();
@@ -51,6 +51,7 @@ namespace Orangify
                 string title = tfile.Tag.Title;
                 string artist = tfile.Tag.FirstAlbumArtist;
                 string album = tfile.Tag.Album;
+                string filePath = pathList[i];
                 TimeSpan length = tfile.Properties.Duration;
                 Console.WriteLine("Title: {0}, duration: {1}", title, length);
                 Artist artistObj = new Artist { Name = artist };
@@ -58,7 +59,7 @@ namespace Orangify
                 long yearReleased = tfile.Tag.Year;
                 
                 DateTime dt = DateTime.FromBinary(yearReleased);
-                Song song = new Song { Title = title,Artist= artistObj, Album = albumObj, Length = length, YearReleased=dt };
+                Song song = new Song { Title = title,Artist= artistObj, Album = albumObj, Length = length, YearReleased=dt, songPath=filePath};
                 lib.songList.Add(song);
                 tfile.Save();
                 Globals.ctx.Songs.Add(song);

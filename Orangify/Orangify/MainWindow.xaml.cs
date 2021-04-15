@@ -22,6 +22,8 @@ namespace Orangify
         public MainWindow()
         {
             InitializeComponent();
+           Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
+           Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
         }
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -30,6 +32,25 @@ namespace Orangify
             {
                 this.DragMove();
             }
+        }
+        
+
+        private void OpenFile()
+        {
+
+            Library lib = new Library();
+            Song currentSelectedSong = (Song)lib.lvSongs.SelectedItem;
+            var currentSelectedSongPath = currentSelectedSong.songPath;
+            Sample_BASS.BassEngine.Instance.OpenFile(currentSelectedSongPath);
+               
+            
+        }
+
+        private void PlayButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            OpenFile();
+            if (Sample_BASS.BassEngine.Instance.CanPlay)
+                Sample_BASS.BassEngine.Instance.Play();
         }
     }
 }
