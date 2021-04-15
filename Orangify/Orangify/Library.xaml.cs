@@ -15,7 +15,7 @@ namespace Orangify
     /// </summary>
     public partial class Library : Window
     {
-        
+        public string songPathSelected;
 
         Settings set = new Settings();
         public List<Song> songList = new List<Song>();
@@ -26,7 +26,7 @@ namespace Orangify
                 InitializeComponent();
                 Globals.ctx = new orangifyEntities1();
                 lvSongs.ItemsSource = Globals.ctx.Songs.ToList<Song>();
-            }
+    }
             catch (Exception ex)
             {
                 Console.WriteLine("Error initializing components: " + ex.Message);
@@ -74,8 +74,7 @@ namespace Orangify
         private void lvSongs_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             Song song = (Song)lvSongs.SelectedItem;
-
-            
+            songPathSelected = song.songPath;
         }
     }
 }

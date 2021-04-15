@@ -7,10 +7,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 namespace Orangify
 {
@@ -19,13 +22,13 @@ namespace Orangify
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private WaveOutEvent outputDevice;
+        private AudioFileReader audioFile;
         public MainWindow()
         {
             InitializeComponent();
-           Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
-           Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
         }
-
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -33,7 +36,7 @@ namespace Orangify
                 this.DragMove();
             }
         }
-        
+
 
         private void OpenFile()
         {
@@ -41,16 +44,36 @@ namespace Orangify
             Library lib = new Library();
             Song currentSelectedSong = (Song)lib.lvSongs.SelectedItem;
             var currentSelectedSongPath = currentSelectedSong.songPath;
-            Sample_BASS.BassEngine.Instance.OpenFile(currentSelectedSongPath);
-               
-            
+
+
+        }
+
+        private void OnPlaybackStopped(object sender, StoppedEventArgs args)
+        {
+            outputDevice.Dispose();
+            outputDevice = null;
+            audioFile.Dispose();
+            audioFile = null;
         }
 
         private void PlayButton_Click_1(object sender, RoutedEventArgs e)
         {
-            OpenFile();
-            if (Sample_BASS.BassEngine.Instance.CanPlay)
-                Sample_BASS.BassEngine.Instance.Play();
+            Library lib = new Library();
+            Settings set = new Settings();
+
+            //OpenFile();
+            if (outputDevice == null)
+            {
+                outputDevice = new WaveOutEvent();
+                outputDevice.PlaybackStopped += OnPlaybackStopped;
+            }
+            if (audioFile == null)
+            {
+                //audioFile = new AudioFileReader();
+                //outputDevice.Init(audioFile);
+            }
+            outputDevice.Play();
+
         }
     }
 }

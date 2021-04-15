@@ -38,7 +38,7 @@
                     <GridViewColumn Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist.Name}"/>
                     <GridViewColumn Header="Album" Width="300"  DisplayMemberBinding="{Binding Album.Name}"/>
                     <GridViewColumn Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased}"/>
-                    <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length.}"/>
+                    <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>
