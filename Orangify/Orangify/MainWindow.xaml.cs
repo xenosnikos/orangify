@@ -69,8 +69,8 @@ namespace Orangify
             }
             if (audioFile == null)
             {
-                //audioFile = new AudioFileReader();
-                //outputDevice.Init(audioFile);
+                audioFile = new AudioFileReader();
+                outputDevice.Init(audioFile);
             }
             outputDevice.Play();
 
