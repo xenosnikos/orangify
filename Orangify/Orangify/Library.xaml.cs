@@ -75,7 +75,7 @@ namespace Orangify
         {
             Song song = (Song)lvSongs.SelectedItem;
 
-            engine.Play();
+            
         }
     }
 }

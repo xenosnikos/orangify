@@ -204,6 +204,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bass.dll" />
+    <Content Include="Bass.Net.dll" />
+    <Content Include="bass_aac.dll" />
     <Content Include="SongModelContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SongModelContext.edmx</DependentUpon>
@@ -214,6 +217,7 @@
       <DependentUpon>SongModelContext.edmx</DependentUpon>
       <LastGenOutput>SongModelContext.cs</LastGenOutput>
     </Content>
+    <Content Include="taglib-sharp.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

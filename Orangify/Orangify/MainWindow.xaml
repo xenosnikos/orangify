@@ -42,9 +42,10 @@
           Name="PlayButton"
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="1" Margin="25,15,27,36" Grid.Row="2" Height="Auto" Width="Auto">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="1" Margin="25,15,27,36" Grid.Row="2" Height="Auto" Width="Auto" Click="PlayButton_Click_1">
             <materialDesign:PackIcon
-            Kind="Play" />
+            Kind="Play"
+                 />
         </Button>
         <Button
           Style="{StaticResource MaterialDesignIconButton}"

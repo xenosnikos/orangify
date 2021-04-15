@@ -24,7 +24,7 @@ namespace Orangify
     public partial class Settings : Window
     {        
         public List<string> pathList = new List<string>();
-        Sample_BASS.BassEngine engine;
+       
         public Settings()
         {
             InitializeComponent();
