@@ -19,6 +19,7 @@ namespace Orangify
 
         Settings set = new Settings();
         public List<Song> songList = new List<Song>();
+        internal int selectedIndex = 0;
         public Library()
         {
             try
@@ -76,6 +77,15 @@ namespace Orangify
             Song song = (Song)lvSongs.SelectedItem;
 
             
+        }
+
+        private void miContextDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Song selSong = (Song)lvSongs.SelectedItem;
+            Globals.ctx.Songs.Remove(selSong);
+            Globals.ctx.SaveChanges();
+            lvSongs.ItemsSource = (from t in Globals.ctx.Songs select t).ToList<Song>();
+            lvSongs.Items.Refresh();
         }
     }
 }

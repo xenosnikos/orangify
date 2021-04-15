@@ -400,23 +400,32 @@ namespace Sample_BASS
             Window mainWindow = Application.Current.MainWindow;
             WindowInteropHelper interopHelper = new WindowInteropHelper(mainWindow);
 
-            if (Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_SPEAKERS, interopHelper.Handle))
+            try
             {
-                int pluginAAC = Bass.BASS_PluginLoad("bass_aac.dll");
+                if (Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_SPEAKERS, interopHelper.Handle))
+                {
+                    int pluginAAC = Bass.BASS_PluginLoad("bass_aac.dll");
 #if DEBUG
-                BASS_INFO info = new BASS_INFO();
-                Bass.BASS_GetInfo(info);
-                Debug.WriteLine(info.ToString());
-                BASS_PLUGININFO aacInfo = Bass.BASS_PluginGetInfo(pluginAAC);
-                foreach (BASS_PLUGINFORM f in aacInfo.formats)
-                    Debug.WriteLine("Type={0}, Name={1}, Exts={2}", f.ctype, f.name, f.exts);
+                    BASS_INFO info = new BASS_INFO();
+                    Bass.BASS_GetInfo(info);
+                    Debug.WriteLine(info.ToString());
+                    BASS_PLUGININFO aacInfo = Bass.BASS_PluginGetInfo(pluginAAC);
+                    foreach (BASS_PLUGINFORM f in aacInfo.formats)
+                        Debug.WriteLine("Type={0}, Name={1}, Exts={2}", f.ctype, f.name, f.exts);
 #endif
+                }
+                else
+                {
+                    MessageBox.Show(mainWindow, "Bass initialization error!");
+                    mainWindow.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show(mainWindow, "Bass initialization error!");
-                mainWindow.Close();
+                MessageBox.Show("bla bla bla" + ex.Message);
             }
+
+            
         }
 
         private void SetRepeatRange(TimeSpan startTime, TimeSpan endTime)
