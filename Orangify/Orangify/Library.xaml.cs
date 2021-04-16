@@ -15,6 +15,7 @@ namespace Orangify
     /// </summary>
     public partial class Library : Window 
     {
+<<<<<<< HEAD
         public string loadSelected()
         {
             var currentSelectedSong = (Song)lvSongs.SelectedItem;
@@ -24,13 +25,21 @@ namespace Orangify
         Settings set = new Settings();
         public List<Song> songList = new List<Song>();
         public  Library()
+=======
+        public string songPathSelected;
+
+        Settings set = new Settings();
+        public List<Song> songList = new List<Song>();
+        internal int selectedIndex = 0;
+        public Library()
+>>>>>>> 1db8320a602c8b2f85168d42911d296c8f81e875
         {
             try
             {
                 InitializeComponent();
                 Globals.ctx = new orangifyEntities1();
                 lvSongs.ItemsSource = Globals.ctx.Songs.ToList<Song>();
-            }
+    }
             catch (Exception ex)
             {
                 Console.WriteLine("Error initializing components: " + ex.Message);
@@ -78,6 +87,7 @@ namespace Orangify
 
         private void anotherWayToClick(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
 
 
             Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
@@ -93,6 +103,19 @@ namespace Orangify
             Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
             if (Sample_BASS.BassEngine.Instance.CanPlay)
                 Sample_BASS.BassEngine.Instance.Play();
+=======
+            Song song = (Song)lvSongs.SelectedItem;
+            songPathSelected = song.songPath;
+        }
+
+        private void miContextDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Song selSong = (Song)lvSongs.SelectedItem;
+            Globals.ctx.Songs.Remove(selSong);
+            Globals.ctx.SaveChanges();
+            lvSongs.ItemsSource = (from t in Globals.ctx.Songs select t).ToList<Song>();
+            lvSongs.Items.Refresh();
+>>>>>>> 1db8320a602c8b2f85168d42911d296c8f81e875
         }
     }
 }
