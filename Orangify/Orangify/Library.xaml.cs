@@ -15,42 +15,29 @@ namespace Orangify
     /// </summary>
     public partial class Library : Window 
     {
+
         public string loadSelected()
         {
             var currentSelectedSong = (Song)lvSongs.SelectedItem;
             return currentSelectedSong.songPath;
         }
 
+        
+        
+        public string songPathSelected;
+
         Settings set = new Settings();
         public List<Song> songList = new List<Song>();
-<<<<<<< Updated upstream
-        public  Library()
-=======
         internal int selectedIndex = 0;
-
-        private Song _selectedSong;
-
-        public Song SelectedSong
-        {
-            get
-            {
-                return _selectedSong;
-            }
-            set
-            {
-                _selectedSong = (Song)lvSongs.SelectedItem;
-                _selectedSong = value;
-            }
-        }
         public Library()
->>>>>>> Stashed changes
+
         {
             try
             {
                 InitializeComponent();
                 Globals.ctx = new orangifyEntities1();
                 lvSongs.ItemsSource = Globals.ctx.Songs.ToList<Song>();
-            }
+    }
             catch (Exception ex)
             {
                 Console.WriteLine("Error initializing components: " + ex.Message);
@@ -99,7 +86,7 @@ namespace Orangify
         private void anotherWayToClick(object sender, RoutedEventArgs e)
         {
 
-<<<<<<< Updated upstream
+
 
             Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
 
@@ -107,15 +94,6 @@ namespace Orangify
 
 
 
-=======
-            if (lvSongs.SelectedValue == null) // (lvToDoList.SelectedIndex == -1)
-            {
-                System.Windows.MessageBox.Show(this, "Please add an item", "Selection error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            Song song = (Song)lvSongs.SelectedItem;
-            songPathSelected = song.songPath;
->>>>>>> Stashed changes
         }
 
         private void clickclick(object sender, RoutedEventArgs e)
@@ -123,6 +101,19 @@ namespace Orangify
             Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
             if (Sample_BASS.BassEngine.Instance.CanPlay)
                 Sample_BASS.BassEngine.Instance.Play();
+
+            Song song = (Song)lvSongs.SelectedItem;
+            songPathSelected = song.songPath;
+        }
+
+        private void miContextDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Song selSong = (Song)lvSongs.SelectedItem;
+            Globals.ctx.Songs.Remove(selSong);
+            Globals.ctx.SaveChanges();
+            lvSongs.ItemsSource = (from t in Globals.ctx.Songs select t).ToList<Song>();
+            lvSongs.Items.Refresh();
+
         }
     }
 }

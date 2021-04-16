@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace Orangify
 {
     /// <summary>
@@ -102,29 +103,9 @@ namespace Orangify
 
         private void PlayButton_Click_1(object sender, RoutedEventArgs e)
         {
-<<<<<<< Updated upstream
             OpenFile();
             if (Sample_BASS.BassEngine.Instance.CanPlay)
                 Sample_BASS.BassEngine.Instance.Play();
-=======
-            //Library lib = new Library();
-            //Settings set = new Settings();
-
-            //OpenFile();
-            if (outputDevice == null)
-            {
-                outputDevice = new WaveOutEvent();
-                outputDevice.PlaybackStopped += OnPlaybackStopped;
-            }
-            if (audioFile == null)
-            {
-                //Song selectedSong = (Song)lib.lvSongs.SelectedItem;
-                audioFile = new AudioFileReader(Library.);
-                outputDevice.Init(audioFile);
-            }
-            outputDevice.Play();
-
->>>>>>> Stashed changes
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

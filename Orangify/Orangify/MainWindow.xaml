@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Orangify" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -12,6 +14,10 @@
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="MainWindow" Height="462" Width="700" ResizeMode="NoResize" WindowStyle="None" MouseDown="MainWindow_MouseDown"
         WindowStartupLocation="Manual" Left="20" Top="20">
+    
+    <Window.Resources>
+        <local:PlayViewModel x:Key="vm"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />
@@ -32,6 +38,7 @@
   Value="25"
   Height="Auto" Grid.ColumnSpan="5" Margin="27,238,31,42" Grid.Row="1" />
         <Button
+            
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
           Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="27,15,25,36" Grid.Row="2" Height="Auto" Width="Auto">
@@ -40,11 +47,13 @@
         </Button>
         <Button
           Name="PlayButton"
+          Command="{Binding PlayCommand, Source={StaticResource vm}}"
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="1" Margin="25,15,27,36" Grid.Row="2" Height="Auto" Width="Auto" Click="PlayButton_Click_1">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="1" Margin="25,15,27,36" Grid.Row="2" Height="Auto" Width="Auto" >
             <materialDesign:PackIcon
             Kind="Play"
+                
                  />
         </Button>
         <Button
