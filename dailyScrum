@@ -1,3 +1,32 @@
+April 16th
+Nick
+
+1.things done
+bass engine load,play,pause with ICommands
+2.things to do 
+Dynamic labels,tag fixes
+3.blocks
+none so far
+
+Phil
+1. things done
+Worked with the group to get our player to play songs
+2.things to do 
+Will work on adding functionality (Language options, ability to load folders)
+3.blocks 
+Was stuck on getting the BASS library to work, solved it as a group
+
+Taline 
+1.things done
+Attempted to learn about ICommand and how to incorporate it into our project
+2. things to do 
+Will work on continuing Nick's discovery in order to apply the code to the Stop / Next Song / Previous Song buttons. Also maybe re-style the windows
+3.blocks
+Still trying to grasp ICommand
+
+
+
+
 april 15th
 Nick 
 implemented taglib for file upload, database working
