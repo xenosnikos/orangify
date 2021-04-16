@@ -35,7 +35,11 @@
                 <TextBlock Name="lblStatusCounter" Text="Total Number of Songs: "/>
             </StatusBarItem>
         </StatusBar>
+<<<<<<< Updated upstream
         <ListView  Name="lvSongs" MouseDoubleClick="clickclick">
+=======
+        <ListView Name="lvSongs" SelectionChanged="lvSongs_SelectionChanged" >
+>>>>>>> Stashed changes
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>

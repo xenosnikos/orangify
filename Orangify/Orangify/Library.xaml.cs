@@ -23,7 +23,27 @@ namespace Orangify
 
         Settings set = new Settings();
         public List<Song> songList = new List<Song>();
+<<<<<<< Updated upstream
         public  Library()
+=======
+        internal int selectedIndex = 0;
+
+        private Song _selectedSong;
+
+        public Song SelectedSong
+        {
+            get
+            {
+                return _selectedSong;
+            }
+            set
+            {
+                _selectedSong = (Song)lvSongs.SelectedItem;
+                _selectedSong = value;
+            }
+        }
+        public Library()
+>>>>>>> Stashed changes
         {
             try
             {
@@ -79,6 +99,7 @@ namespace Orangify
         private void anotherWayToClick(object sender, RoutedEventArgs e)
         {
 
+<<<<<<< Updated upstream
 
             Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
 
@@ -86,6 +107,15 @@ namespace Orangify
 
 
 
+=======
+            if (lvSongs.SelectedValue == null) // (lvToDoList.SelectedIndex == -1)
+            {
+                System.Windows.MessageBox.Show(this, "Please add an item", "Selection error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            Song song = (Song)lvSongs.SelectedItem;
+            songPathSelected = song.songPath;
+>>>>>>> Stashed changes
         }
 
         private void clickclick(object sender, RoutedEventArgs e)
