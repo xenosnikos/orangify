@@ -27,10 +27,16 @@ namespace Orangify
        
         public Settings()
         {
+            try { 
+            
             InitializeComponent();
 
             lvSettingsPaths.ItemsSource = pathList;
-
+            }
+            catch(SystemException ex )
+            {
+                System.Windows.MessageBox.Show("something fucked up" + ex.Message);
+            }
         }
 
         private void SettingsWindow_MouseDown(object sender, MouseButtonEventArgs e)

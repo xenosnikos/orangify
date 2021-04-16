@@ -13,13 +13,17 @@ namespace Orangify
     /// <summary>
     /// Interaction logic for Library.xaml
     /// </summary>
-    public partial class Library : Window
+    public partial class Library : Window 
     {
-        
+        public string loadSelected()
+        {
+            var currentSelectedSong = (Song)lvSongs.SelectedItem;
+            return currentSelectedSong.songPath;
+        }
 
         Settings set = new Settings();
         public List<Song> songList = new List<Song>();
-        public Library()
+        public  Library()
         {
             try
             {
@@ -71,11 +75,28 @@ namespace Orangify
             }
         }
 
-        private void lvSongs_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            Song song = (Song)lvSongs.SelectedItem;
 
-            
+        private void anotherWayToClick(object sender, RoutedEventArgs e)
+        {
+
+
+            Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
+
+
+
+
+
+        }
+
+        private void clickclick(object sender, RoutedEventArgs e)
+        {
+            Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
+            if (Sample_BASS.BassEngine.Instance.CanPlay)
+                Sample_BASS.BassEngine.Instance.Play();
         }
     }
 }
+
+
+
+

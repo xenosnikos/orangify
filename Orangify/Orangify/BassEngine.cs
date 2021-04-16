@@ -1,10 +1,8 @@
-﻿
-// (c) Copyright Jacob Johnston.
+﻿// (c) Copyright Jacob Johnston.
 // This source is subject to Microsoft Public License (Ms-PL).
 // Please see http://go.microsoft.com/fwlink/?LinkID=131993 for details.
 // All other rights reserved.
 
-using Orangify;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -347,7 +345,7 @@ namespace Sample_BASS
             int currentPointIndex = 0;
             for (int i = 0; i < waveformLength; i += 2)
             {
-                Bass.BASS_ChannelGetLevel(stream, levels);
+               // Bass.BASS_ChannelGetLevel(stream, levels);
                 waveformData[i] = levels[0];
                 waveformData[i + 1] = levels[1];
 
@@ -367,7 +365,7 @@ namespace Sample_BASS
                 if (i % 3000 == 0)
                 {
                     float[] clonedData = (float[])waveformCompressedPoints.Clone();
-                    App.Current.Dispatcher.Invoke(new Action(() =>
+                    Orangify.App.Current.Dispatcher.Invoke(new Action(() =>
                     {
                         WaveformData = clonedData;
                     }));
@@ -380,7 +378,7 @@ namespace Sample_BASS
                 }
             }
             float[] finalClonedData = (float[])waveformCompressedPoints.Clone();
-            App.Current.Dispatcher.Invoke(new Action(() =>
+            Orangify.App.Current.Dispatcher.Invoke(new Action(() =>
             {
                 fullLevelData = waveformData;
                 WaveformData = finalClonedData;
@@ -467,12 +465,12 @@ namespace Sample_BASS
         #region Callbacks
         private void EndTrack(int handle, int channel, int data, IntPtr user)
         {
-            App.Current.Dispatcher.BeginInvoke(new Action(() => Stop()));
+            Orangify.App.Current.Dispatcher.BeginInvoke(new Action(() => Stop()));
         }
 
         private void RepeatCallback(int handle, int channel, int data, IntPtr user)
         {
-            App.Current.Dispatcher.BeginInvoke(new Action(() => ChannelPosition = SelectionBegin.TotalSeconds));
+            Orangify.App.Current.Dispatcher.BeginInvoke(new Action(() => ChannelPosition = SelectionBegin.TotalSeconds));
         }
         #endregion
 

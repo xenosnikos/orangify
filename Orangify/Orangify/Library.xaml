@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Orangify"
+        
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -11,6 +12,9 @@
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="Library" Height="450" Width="1400" ResizeMode="NoResize" WindowStyle="None" MouseDown="Library_MouseDown">
+    <Window.Resources>
+        <local:LibViewModel x:Key="vm"/>
+    </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File"
@@ -31,19 +35,21 @@
                 <TextBlock Name="lblStatusCounter" Text="Total Number of Songs: "/>
             </StatusBarItem>
         </StatusBar>
-        <ListView Name="lvSongs" SelectionChanged="lvSongs_SelectionChanged">
+        <ListView  Name="lvSongs" MouseDoubleClick="clickclick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>
                     <GridViewColumn Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist.Name}"/>
                     <GridViewColumn Header="Album" Width="300"  DisplayMemberBinding="{Binding Album.Name}"/>
                     <GridViewColumn Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased}"/>
-                    <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length.}"/>
+                    <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>
                 <ContextMenu>
+                    <MenuItem Header="Play"  Command="{Binding LibCommand, Source={StaticResource vm}}"/>
                     <MenuItem Header="Delete" Command="{Binding RemoveItem}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"/>
+                    <MenuItem Header="PlayAnotherWay" Click="anotherWayToClick"  />
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>

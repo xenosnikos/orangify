@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +23,9 @@ namespace Orangify
         public MainWindow()
         {
             InitializeComponent();
-           Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
-           Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
+            Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
+            engine.PropertyChanged += BassEngine_PropertyChanged;
+            Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
         }
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -33,7 +35,57 @@ namespace Orangify
                 this.DragMove();
             }
         }
-        
+        private void BassEngine_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
+            switch (e.PropertyName)
+            {
+                case "FileTag":
+                    if (engine.FileTag != null)
+                    {
+                        TagLib.Tag tag = engine.FileTag.Tag;
+                        if (tag.Pictures.Length > 0)
+                        {
+                            using (MemoryStream albumArtworkMemStream = new MemoryStream(tag.Pictures[0].Data.Data))
+                            {
+                                try
+                                {
+                                    BitmapImage albumImage = new BitmapImage();
+                                    albumImage.BeginInit();
+                                    albumImage.CacheOption = BitmapCacheOption.OnLoad;
+                                    albumImage.StreamSource = albumArtworkMemStream;
+                                    albumImage.EndInit();
+                                    //albumArtPanel.AlbumArtImage = albumImage;
+                                }
+                                catch (NotSupportedException)
+                                {
+                                   // albumArtPanel.AlbumArtImage = null;
+                                    // System.NotSupportedException:
+                                    // No imaging component suitable to complete this operation was found.
+                                }
+                                albumArtworkMemStream.Close();
+                            }
+                        }
+                        else
+                        {
+                           // albumArtPanel.AlbumArtImage = null;
+                        }
+                    }
+                    else
+                    {
+                        //albumArtPanel.AlbumArtImage = null;
+                    }
+                    break;
+                case "ChannelPosition":
+                    //clockDisplay.Time = TimeSpan.FromSeconds(engine.ChannelPosition);
+                    break;
+                default:
+                    // Do Nothing
+                    break;
+            }
+
+        }
+
 
         private void OpenFile()
         {
