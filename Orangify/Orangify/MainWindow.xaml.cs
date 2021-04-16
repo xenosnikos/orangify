@@ -26,6 +26,8 @@ namespace Orangify
             Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
             engine.PropertyChanged += BassEngine_PropertyChanged;
             Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
+            Sample_BASS.UIHelper.Bind(engine, "CanPause", PauseButton, Button.IsEnabledProperty);
+
         }
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -123,6 +125,11 @@ namespace Orangify
             outputDevice.Play();
 
 >>>>>>> Stashed changes
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

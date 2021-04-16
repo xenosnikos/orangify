@@ -10,12 +10,14 @@ namespace Orangify
     public class PlayViewModel
     {
         public ICommand PlayCommand { get; set; }
-        
+        public ICommand PauseCommand { get; set; }
+
         public event EventHandler CanExcecuteSong;
         
         public PlayViewModel()
         {
             PlayCommand = new Command(PlaySong, canExcecuteSong);
+            PauseCommand = new Command(PauseSong, canExcecuteSong);
         }
         private bool canExcecuteSong(object parameter)
         {
@@ -25,8 +27,17 @@ namespace Orangify
         {
 
 
-            if (Sample_BASS.BassEngine.Instance.CanPlay)
+            if (Sample_BASS.BassEngine.Instance.CanPlay);
                 Sample_BASS.BassEngine.Instance.Play();
+
+
+        }
+        private void PauseSong(object currentSelectedSong)
+        {
+
+
+            if (Sample_BASS.BassEngine.Instance.CanPause);
+                Sample_BASS.BassEngine.Instance.Pause();
 
 
         }
