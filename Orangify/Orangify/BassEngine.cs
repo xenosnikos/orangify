@@ -345,7 +345,7 @@ namespace Sample_BASS
             int currentPointIndex = 0;
             for (int i = 0; i < waveformLength; i += 2)
             {
-               // Bass.BASS_ChannelGetLevel(stream, levels);
+                //Bass.BASS_ChannelGetLevel(stream, levels);
                 waveformData[i] = levels[0];
                 waveformData[i + 1] = levels[1];
 

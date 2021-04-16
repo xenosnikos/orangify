@@ -47,13 +47,12 @@
             </ListView.View>
             <ListView.ContextMenu>
                 <ContextMenu>
-<<<<<<< HEAD
                     <MenuItem Header="Play"  Command="{Binding LibCommand, Source={StaticResource vm}}"/>
                     <MenuItem Header="Delete" Command="{Binding RemoveItem}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"/>
                     <MenuItem Header="PlayAnotherWay" Click="anotherWayToClick"  />
-=======
+
                     <MenuItem Header="Delete" Command="{Binding RemoveItem}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" Click="miContextDelete_Click" />
->>>>>>> 1db8320a602c8b2f85168d42911d296c8f81e875
+
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
