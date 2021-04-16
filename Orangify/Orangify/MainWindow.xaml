@@ -57,9 +57,11 @@
                  />
         </Button>
         <Button
+            Name="PauseButton"
+            Command="{Binding PauseCommand, Source={StaticResource vm}}"
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="2" Margin="26,15,26,36" Grid.Row="2" Height="Auto" Width="Auto">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="2" Margin="26,15,26,36" Grid.Row="2" Height="Auto" Width="Auto" Click="Button_Click">
             <materialDesign:PackIcon
             Kind="Pause" />
         </Button>
