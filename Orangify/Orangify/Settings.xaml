@@ -26,7 +26,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Add Folder to Library" HorizontalAlignment="Left" Margin="602,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFolderBtn_Click"/>
-        <Button Content="Accept" HorizontalAlignment="Left" Margin="312,335,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAcceptBtn_Click"/>
+        <Button Content="Add song to Library" Name="btAddSong" HorizontalAlignment="Left" Margin="602,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFileBtn_Click"/>
+        <Button Content="Accept" Name="btSettingsAccept" HorizontalAlignment="Left" Margin="312,335,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAcceptBtn_Click"/>
+        <Button Content="Add Folder to Library" Name="btAddFolder" HorizontalAlignment="Left" Margin="406,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFolderBtn_Click"/>
     </Grid>
 </Window>

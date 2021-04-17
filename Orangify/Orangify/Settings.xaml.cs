@@ -22,18 +22,19 @@ namespace Orangify
     /// </summary>
     /// 
     public partial class Settings : Window
-    {        
+    {
         public List<string> pathList = new List<string>();
-       
+
         public Settings()
         {
-            try { 
-            
-            InitializeComponent();
+            try
+            {
 
-            lvSettingsPaths.ItemsSource = pathList;
+                InitializeComponent();
+
+                lvSettingsPaths.ItemsSource = pathList;
             }
-            catch(SystemException ex )
+            catch (SystemException ex)
             {
                 System.Windows.MessageBox.Show("something fucked up" + ex.Message);
             }
@@ -63,9 +64,9 @@ namespace Orangify
                 Artist artistObj = new Artist { Name = artist };
                 Album albumObj = new Album { Name = album };
                 long yearReleased = tfile.Tag.Year;
-                
+
                 DateTime dt = DateTime.FromBinary(yearReleased);
-                Song song = new Song { Title = title,Artist= artistObj, Album = albumObj, Length = length, YearReleased=dt, songPath=filePath};
+                Song song = new Song { Title = title, Artist = artistObj, Album = albumObj, Length = length, YearReleased = dt, songPath = filePath };
                 lib.songList.Add(song);
                 tfile.Save();
                 Globals.ctx.Songs.Add(song);
@@ -96,10 +97,10 @@ namespace Orangify
                     DirSearch(d);
                 }
             }
-            
+
         }
         //TODO: Implement library folder selection
-        private void SettingsAddFolderBtn_Click(object sender, RoutedEventArgs e)
+        private void SettingsAddFileBtn_Click(object sender, RoutedEventArgs e)
         {
             using (var dialog = new System.Windows.Forms.OpenFileDialog())
             {
@@ -120,6 +121,28 @@ namespace Orangify
                 }
             }
 
+        }
+
+        private void SettingsAddFolderBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    string[] files = Directory.GetFiles(fbd.SelectedPath);
+
+                    System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
+
+                    foreach (string s in files)
+                    {
+                        pathList.Add(s);
+                        lvSettingsPaths.Items.Refresh();
+                    }
+                }
+            }
         }
     }
 }
