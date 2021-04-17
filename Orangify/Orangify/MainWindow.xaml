@@ -35,7 +35,7 @@
                                   Margin="10,10,26,101"
                                   BarCount="16" Grid.Row="1" Grid.ColumnSpan="4" />
         <Label Content="Orangify" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.021,0.156" Grid.ColumnSpan="3" Height="50" Width="217" Margin="10,10,0,0" FontSize="36"/>
-        <Label Name="lblTitle" Content="Welcome" Grid.Column="4" HorizontalAlignment="Left" Margin="4,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="68" Width="287" FontSize="48"/>
+        <Label  Name="lblTitle" Content="Welcome" Grid.Column="4" HorizontalAlignment="Left" Margin="4,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="68" Width="287" FontSize="48"/>
         <Label Name ="lblArtistAlbum" Content="To Orangify" Grid.Column="4" HorizontalAlignment="Left" Margin="10,83,-6,0" Grid.Row="1" VerticalAlignment="Top" Width="297" Height="67" FontSize="24"/>
         <svl:WaveformTimeline x:Name="waveformTimeline"
                                   Margin="3,215,1,10"

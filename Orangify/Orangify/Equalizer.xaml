@@ -14,12 +14,14 @@
         Title="Equalizer" Height="462" Width="700" ResizeMode="NoResize" WindowStyle="None" MouseDown="EQWindow_MouseDown">
     <Grid>
         <Slider
-  TickFrequency="25"
+            Value="0.5"
+  TickFrequency="0.25"
   TickPlacement="TopLeft"
   Orientation="Vertical"
-  Minimum="1"
-  Maximum="50"
-  IsEnabled="False" Margin="51,31,492.6,81" />
+  Minimum="0"
+  Maximum="1"
+            
+  IsEnabled="true" Margin="51,21,493,91" ValueChanged="Slider_ValueChanged" />
         <Button
           Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="PRESETS" Margin="51,365,444.6,23" />
         <svl:Equalizer NumberOfBands="7" Margin="238,21,25,97" />
