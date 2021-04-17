@@ -45,7 +45,7 @@ namespace Orangify
                 
                 spectrumAnalyzer.RegisterSoundPlayer(engine);
                 waveformTimeline.RegisterSoundPlayer(engine);
-                //waveformTimeline.RegisterSoundPlayer(engine);
+                
 
 
                
