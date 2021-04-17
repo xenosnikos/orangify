@@ -144,5 +144,10 @@ namespace Orangify
                 }
             }
         }
+
+        private void SettingsXBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
