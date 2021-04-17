@@ -50,23 +50,61 @@ namespace Orangify
 
         private void SettingsAcceptBtn_Click(object sender, RoutedEventArgs e)
         {
-            // engine.OpenFile(dial);
+           
+            Artist existingArtist;
+            Album existingAlbum;
+            Library lib = new Library();
             for (int i = 0; i < pathList.Count; i++)
             {
-                Library lib = new Library();
+                
                 var tfile = TagLib.File.Create(pathList[i]);
                 string title = tfile.Tag.Title;
-                string artist = tfile.Tag.FirstAlbumArtist;
+
+                string artist = tfile.Tag.Performers[0];
+               
+                using (var context = new orangifyEntities1() )
+                {
+                     existingArtist = context.Artists.Where<Artist>(S => Name == artist)as Artist;
+                    
+                    if (existingArtist == null)
+                    {
+                        existingArtist = new Artist { Name = artist };
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                }
+
                 string album = tfile.Tag.Album;
+                using (var context = new orangifyEntities1())
+                {
+                    existingAlbum = context.Albums.Where<Album>(S => Name == album) as Album;
+
+                    if (existingAlbum == null)
+                    {
+                        existingAlbum = new Album { Name = artist };
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                }
+
                 string filePath = pathList[i];
                 TimeSpan length = tfile.Properties.Duration;
                 Console.WriteLine("Title: {0}, duration: {1}", title, length);
-                Artist artistObj = new Artist { Name = artist };
+               
                 Album albumObj = new Album { Name = album };
+                
+               
                 long yearReleased = tfile.Tag.Year;
-
+                
                 DateTime dt = DateTime.FromBinary(yearReleased);
-                Song song = new Song { Title = title, Artist = artistObj, Album = albumObj, Length = length, YearReleased = dt, songPath = filePath };
+            
+                Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath };
                 lib.songList.Add(song);
                 tfile.Save();
                 Globals.ctx.Songs.Add(song);

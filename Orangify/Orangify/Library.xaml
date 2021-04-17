@@ -45,15 +45,16 @@
                     <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>
                     <GridViewColumn Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist.Name}"/>
                     <GridViewColumn Header="Album" Width="300"  DisplayMemberBinding="{Binding Album.Name}"/>
-                    <GridViewColumn Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased}"/>
+                    <GridViewColumn Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased.Year}"/>
                     <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Play"  Command="{Binding LibCommand, Source={StaticResource vm}}"/>
-                    <MenuItem Header="Delete" Command="{Binding RemoveItem}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"/>
-                    <MenuItem Header="PlayAnotherWay" Click="anotherWayToClick"  />
+                    
+                   
+                    
+                    <MenuItem Header="Play" Click="anotherWayToClick"  />
 
                     <MenuItem Header="Delete" Command="{Binding RemoveItem}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" Click="miContextDelete_Click" />
 

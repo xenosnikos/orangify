@@ -29,6 +29,9 @@ namespace Orangify
 
             if (Sample_BASS.BassEngine.Instance.CanPlay);
                 Sample_BASS.BassEngine.Instance.Play();
+            
+            
+            
 
 
         }

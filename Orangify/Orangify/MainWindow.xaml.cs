@@ -12,7 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Windows.Threading;
+using WPFSoundVisualizationLib;
 
 namespace Orangify
 {
@@ -21,15 +22,63 @@ namespace Orangify
     /// </summary>
     public partial class MainWindow : Window
     {
+       // private bool userIsDraggingSlider = false;
+
         public MainWindow()
         {
+
+            try { 
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
             Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
             engine.PropertyChanged += BassEngine_PropertyChanged;
+
+                //initialize taglib for mainWindow
+
+                if (engine.CanPause) { 
+            string songStringTitle = engine.FileTag.Tag.Title.ToString();
+            string songStringAlbumArtist = $"{ engine.FileTag.Tag.Album.ToString()},{engine.FileTag.Tag.Performers[0].ToString()}";
+                    lblTitle.Content = songStringTitle;
+                    lblArtistAlbum.Content = songStringAlbumArtist;
+                }
+
+
+
+
+
+                //Audio Controls
             Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
+
             Sample_BASS.UIHelper.Bind(engine, "CanPause", PauseButton, Button.IsEnabledProperty);
 
+
+
+            sliProgress.Value = engine.ChannelPosition;
+
+           
+            
+            //Dynamic 
+            spectrumAnalyzer.RegisterSoundPlayer(engine);
+
+                //waveformTimeline.RegisterSoundPlayer(engine);
+
+
+
+
+            }
+            catch(SystemException ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                MessageBox.Show("Fatal error: Database connection failed:\n" + ex.Message);
+                Environment.Exit(1); // fatal error
+            }
+
+
+
+
         }
+       
+
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -101,14 +150,22 @@ namespace Orangify
             
         }
 
-        private void PlayButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            OpenFile();
-            if (Sample_BASS.BassEngine.Instance.CanPlay)
-                Sample_BASS.BassEngine.Instance.Play();
-        }
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void sliProgress_ValueChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void sliProgress_DragStarted(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void sliProgress_DragCompleted(object sender, RoutedEventArgs e)
         {
 
         }

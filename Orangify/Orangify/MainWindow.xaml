@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Orangify" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        
+        xmlns:svl="clr-namespace:WPFSoundVisualizationLib;assembly=WPFSoundVisualizationLib"
         
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -14,7 +14,7 @@
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="MainWindow" Height="462" Width="700" ResizeMode="NoResize" WindowStyle="None" MouseDown="MainWindow_MouseDown"
         WindowStartupLocation="Manual" Left="20" Top="20">
-    
+
     <Window.Resources>
         <local:PlayViewModel x:Key="vm"/>
     </Window.Resources>
@@ -31,10 +31,19 @@
             <RowDefinition Height="98*" />
             <RowDefinition Height="33*" />
         </Grid.RowDefinitions>
+        <svl:SpectrumAnalyzer x:Name="spectrumAnalyzer"
+                                  Margin="10,26,26,61"
+                                  BarCount="16" Grid.Row="1" Grid.ColumnSpan="4" />
         <Label Content="Orangify" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.021,0.156" Grid.ColumnSpan="3" Height="50" Width="217" Margin="10,10,0,0" FontSize="36"/>
-        <Label Content="Song Title" Grid.Column="4" HorizontalAlignment="Left" Margin="10,53,0,0" Grid.Row="1" VerticalAlignment="Top" Height="68" Width="287" FontSize="48"/>
-        <Label Content="Artist - Album" Grid.Column="4" HorizontalAlignment="Left" Margin="10,126,-6,0" Grid.Row="1" VerticalAlignment="Top" Width="297" Height="67" FontSize="24"/>
+        <Label Name="lblTitle" Content="Welcome" Grid.Column="4" HorizontalAlignment="Left" Margin="10,53,0,0" Grid.Row="1" VerticalAlignment="Top" Height="68" Width="287" FontSize="48"/>
+        <Label Name ="lblArtistAlbum" Content="To Orangify" Grid.Column="4" HorizontalAlignment="Left" Margin="10,126,-6,0" Grid.Row="1" VerticalAlignment="Top" Width="297" Height="67" FontSize="24"/>
+        <svl:WaveformTimeline x:Name="waveformTimeline"
+                                  Margin="27,221,33,24"
+                                  BorderThickness="1" Grid.ColumnSpan="5" Grid.Row="1" />
         <ProgressBar
+            Name="sliProgress"
+            Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged"
+            
   Value="25"
   Height="Auto" Grid.ColumnSpan="5" Margin="27,238,31,42" Grid.Row="1" />
         <Button

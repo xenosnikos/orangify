@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:svl="clr-namespace:WPFSoundVisualizationLib;assembly=WPFSoundVisualizationLib"
         xmlns:local="clr-namespace:Orangify"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -21,6 +22,8 @@
   IsEnabled="False" Margin="51,31,492.6,81" />
         <Button
           Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="PRESETS" Margin="51,365,444.6,23" />
+        <svl:Equalizer NumberOfBands="7" Margin="238,21,25,97" />
+        <!--
         <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="549,2,9.6,28" Width="35" />
         <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="514,2,44.6,28" Width="35" />
         <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="478,2,79.6,28" Width="36" />
@@ -31,6 +34,7 @@
         <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="298,2,259.6,28" Width="36" />
         <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="267,2,290.6,28" Width="36" />
         <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="231,2,326.6,28" Width="36" />
+        
         <Label Content="60hz" HorizontalAlignment="Left" Margin="231,392,0,0" VerticalAlignment="Top" Width="36" FontSize="8"/>
         <Label Content="170hz" HorizontalAlignment="Left" Margin="267,392,0,0" VerticalAlignment="Top" Width="31" FontSize="8"/>
         <Label Content="310hz" HorizontalAlignment="Left" Margin="298,392,0,0" VerticalAlignment="Top" Width="36" FontSize="8"/>
@@ -45,5 +49,6 @@
         <Label Content="+ 12 db" HorizontalAlignment="Left" Margin="106,21,0,0" VerticalAlignment="Top"/>
         <Label Content="- 12 db" HorizontalAlignment="Left" Margin="106,322,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="-0.157,0.39"/>
         <Label Content="PREAMP" HorizontalAlignment="Left" Margin="69,8,0,0" VerticalAlignment="Top" Width="37" Height="18" FontSize="6"/>
+        -->
     </Grid>
 </Window>
