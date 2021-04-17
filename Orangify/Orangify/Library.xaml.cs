@@ -13,7 +13,7 @@ namespace Orangify
     /// <summary>
     /// Interaction logic for Library.xaml
     /// </summary>
-    public partial class Library : Window 
+    public partial class Library : Window
     {
 
         public string loadSelected()
@@ -22,8 +22,8 @@ namespace Orangify
             return currentSelectedSong.songPath;
         }
 
-        
-        
+
+
         public string songPathSelected;
 
         Settings set = new Settings();
@@ -37,7 +37,7 @@ namespace Orangify
                 InitializeComponent();
                 Globals.ctx = new orangifyEntities1();
                 lvSongs.ItemsSource = Globals.ctx.Songs.ToList<Song>();
-    }
+            }
             catch (Exception ex)
             {
                 Console.WriteLine("Error initializing components: " + ex.Message);
@@ -52,7 +52,7 @@ namespace Orangify
 
             if (settings.ShowDialog() == true)
             {
-                
+
                 Settings set = new Settings();
                 settings.lvSettingsPaths.ItemsSource = settings.pathList.ToList();
                 settings.lvSettingsPaths.Items.Refresh();
@@ -74,7 +74,7 @@ namespace Orangify
             }
         }
 
-        private void Library_MouseDown(object sender, MouseButtonEventArgs e)
+        private void LibraryWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
@@ -85,15 +85,7 @@ namespace Orangify
 
         private void anotherWayToClick(object sender, RoutedEventArgs e)
         {
-
-
-
             Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
-
-
-
-
-
         }
 
         private void clickclick(object sender, RoutedEventArgs e)
@@ -115,6 +107,7 @@ namespace Orangify
             lvSongs.Items.Refresh();
 
         }
+
     }
 }
 

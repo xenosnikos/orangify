@@ -11,17 +11,17 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Library" Height="450" Width="1400" ResizeMode="NoResize" WindowStyle="None" MouseDown="Library_MouseDown">
+        Title="Library" Height="450" Width="1400" ResizeMode="NoResize" WindowStyle="None" MouseDown="LibraryWindow_MouseDown">
     <Window.Resources>
         <local:LibViewModel x:Key="vm"/>
     </Window.Resources>
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
+        <Menu DockPanel.Dock="Top" Margin="0,0,1325,0">
             <MenuItem Header="_File"
                     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                     Background="{DynamicResource MaterialDesignPaper}"
                     TextElement.FontWeight="Medium"
-                    TextElement.FontSize="14">
+                    TextElement.FontSize="14" Width="75">
                 <MenuItem Header="_Settings" Click="miSettings_Click"/>
                 <Separator />
                 <MenuItem Header="_Exit" Click="miExit_Click"/>
@@ -37,9 +37,9 @@
         </StatusBar>
         
         <!-- COMMENT-->
-        
-        
-        <ListView  Name="lvSongs" MouseDoubleClick="clickclick">
+
+
+        <ListView  Name="lvSongs" MouseDoubleClick="clickclick" Margin="0,0,0,0.2" Width="1344">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>

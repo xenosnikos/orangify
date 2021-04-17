@@ -14,7 +14,7 @@
     <Grid>
         <Label Content="Settings" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="41" Width="124" FontSize="26"/>
         <Label Content="Language" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Height="41" Width="100" FontSize="18"/>
-        <ComboBox HorizontalAlignment="Left" Margin="159,78,0,0" VerticalAlignment="Top" Width="180">
+        <ComboBox Name="cbSettingsLanguage" HorizontalAlignment="Left" Margin="159,78,0,0" VerticalAlignment="Top" Width="180">
             <ComboBoxItem IsSelected="True">English</ComboBoxItem>
             <ComboBoxItem>Francais</ComboBoxItem>
         </ComboBox>
