@@ -150,5 +150,10 @@ namespace Orangify
         {
 
         }
+
+        private void PlayViewModel_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
+        {
+
+        }
     }
 }

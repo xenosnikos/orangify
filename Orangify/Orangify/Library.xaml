@@ -11,7 +11,9 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Library" Height="450" Width="1400" ResizeMode="NoResize" WindowStyle="None" MouseDown="LibraryWindow_MouseDown">
+        BorderBrush="#FC6A03"
+        BorderThickness="10"
+        Title="Library" Height="450" Width="1410" ResizeMode="NoResize" WindowStyle="None" MouseDown="LibraryWindow_MouseDown">
     <Window.Resources>
         <local:LibViewModel x:Key="vm"/>
     </Window.Resources>
