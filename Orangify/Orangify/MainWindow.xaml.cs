@@ -28,57 +28,39 @@ namespace Orangify
         {
 
             try { 
-            InitializeComponent();
-            DispatcherTimer timer = new DispatcherTimer();
-            Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
-            engine.PropertyChanged += BassEngine_PropertyChanged;
+                InitializeComponent();
+                DispatcherTimer timer = new DispatcherTimer();
+                Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
+                engine.PropertyChanged += BassEngine_PropertyChanged;
 
-                //initialize taglib for mainWindow
-
-                if (engine.CanPause) { 
-            string songStringTitle = engine.FileTag.Tag.Title.ToString();
-            string songStringAlbumArtist = $"{ engine.FileTag.Tag.Album.ToString()},{engine.FileTag.Tag.Performers[0].ToString()}";
-                    lblTitle.Content = songStringTitle;
-                    lblArtistAlbum.Content = songStringAlbumArtist;
-                }
-
-
-
-
+               
 
                 //Audio Controls
-            Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
+                Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
 
-            Sample_BASS.UIHelper.Bind(engine, "CanPause", PauseButton, Button.IsEnabledProperty);
+                Sample_BASS.UIHelper.Bind(engine, "CanPause", PauseButton, Button.IsEnabledProperty);
 
-
-
-            sliProgress.Value = engine.ChannelPosition;
-
-           
-            
-            //Dynamic 
-            spectrumAnalyzer.RegisterSoundPlayer(engine);
-
+                //Dynamic 
+                
+                
+                spectrumAnalyzer.RegisterSoundPlayer(engine);
+                waveformTimeline.RegisterSoundPlayer(engine);
                 //waveformTimeline.RegisterSoundPlayer(engine);
 
 
+               
 
+               
 
             }
             catch(SystemException ex)
             {
                 Console.WriteLine(ex.StackTrace);
                 MessageBox.Show("Fatal error: Database connection failed:\n" + ex.Message);
-                Environment.Exit(1); // fatal error
+                
             }
 
-
-
-
         }
-       
-
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -96,6 +78,10 @@ namespace Orangify
                     if (engine.FileTag != null)
                     {
                         TagLib.Tag tag = engine.FileTag.Tag;
+                        string songStringTitle = engine.FileTag.Tag.Title.ToString();
+                        string songStringAlbumArtist = $"{ engine.FileTag.Tag.Album.ToString()},{engine.FileTag.Tag.Performers[0].ToString()}";
+                        lblTitle.Content = songStringTitle;
+                        lblArtistAlbum.Content = songStringAlbumArtist;
                         if (tag.Pictures.Length > 0)
                         {
                             using (MemoryStream albumArtworkMemStream = new MemoryStream(tag.Pictures[0].Data.Data))
@@ -129,7 +115,7 @@ namespace Orangify
                     }
                     break;
                 case "ChannelPosition":
-                    //clockDisplay.Time = TimeSpan.FromSeconds(engine.ChannelPosition);
+                    clockDisplay.Time = TimeSpan.FromSeconds(engine.ChannelPosition);
                     break;
                 default:
                     // Do Nothing
@@ -138,19 +124,14 @@ namespace Orangify
 
         }
 
-
         private void OpenFile()
         {
 
             Library lib = new Library();
             Song currentSelectedSong = (Song)lib.lvSongs.SelectedItem;
             var currentSelectedSongPath = currentSelectedSong.songPath;
-            Sample_BASS.BassEngine.Instance.OpenFile(currentSelectedSongPath);
-               
-            
+            Sample_BASS.BassEngine.Instance.OpenFile(currentSelectedSongPath);         
         }
-
-        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
