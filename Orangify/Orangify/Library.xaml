@@ -41,7 +41,7 @@
         <!-- COMMENT-->
 
 
-        <ListView  Name="lvSongs" MouseDoubleClick="clickclick" Margin="0,0,0,0.2" Width="1344">
+        <ListView  Name="lvSongs" MouseDoubleClick="clickclick" Margin="0,0,0,0.2" Width="1344" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>
@@ -53,9 +53,9 @@
             </ListView.View>
             <ListView.ContextMenu>
                 <ContextMenu>
-                    
-                   
-                    
+
+                    <MenuItem Header="Edit Tag" Click="clickEdit"  />
+
                     <MenuItem Header="Play" Click="anotherWayToClick"  />
 
                     <MenuItem Header="Delete" Command="{Binding RemoveItem}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" Click="miContextDelete_Click" />

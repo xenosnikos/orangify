@@ -42,7 +42,7 @@ namespace Orangify
 
                 //Dynamic 
                 
-                
+
                 spectrumAnalyzer.RegisterSoundPlayer(engine);
                 waveformTimeline.RegisterSoundPlayer(engine);
                 

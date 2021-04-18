@@ -28,31 +28,66 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="23*" />
-            <RowDefinition Height="98*" />
+            <RowDefinition Height="17*" />
+            <RowDefinition Height="81*"/>
             <RowDefinition Height="33*" />
         </Grid.RowDefinitions>
         <svl:SpectrumAnalyzer x:Name="spectrumAnalyzer"
                                   Margin="10,10,26,101"
-                                  BarCount="16" Grid.Row="1" Grid.ColumnSpan="4" />
+                                  BarCount="16" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="2" />
         <Label Content="Orangify" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.021,0.156" Grid.ColumnSpan="3" Height="50" Width="217" Margin="10,10,0,0" FontSize="36"/>
-        <Label  Name="lblTitle" Content="Welcome" Grid.Column="4" HorizontalAlignment="Left" Margin="4,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="68" Width="297" FontSize="48"/>
-        <Label Name ="lblArtistAlbum" Content="To Orangify" Grid.Column="4" HorizontalAlignment="Left" Margin="10,83,-6,0" Grid.Row="1" VerticalAlignment="Top" Width="297" Height="67" 
+
+
+        <StackPanel x:Name="stack"  Grid.Column="4" Grid.Row="1" Orientation="Horizontal" Margin="10,0" Grid.RowSpan="2">
+            <StackPanel.Resources>
+                <local:NegatingConverter x:Key="NegatingConverter" />
+                <Storyboard x:Key="slide">
+                    <DoubleAnimation From="0" To="{Binding Width, ElementName=canvas, Converter={StaticResource NegatingConverter}}" Duration="00:00:5"
+                      Storyboard.TargetProperty="X"
+                      Storyboard.TargetName="transferCurreny"
+                      RepeatBehavior="Forever"/>
+                </Storyboard>
+            </StackPanel.Resources>
+            <StackPanel.RenderTransform>
+                <TranslateTransform x:Name="transferCurreny" X="0"/>
+            </StackPanel.RenderTransform>
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="StackPanel.Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource slide}" />
+                </EventTrigger>
+                <EventTrigger RoutedEvent="StackPanel.SizeChanged">
+                    <BeginStoryboard Storyboard="{StaticResource slide}" />
+                </EventTrigger>
+            </StackPanel.Triggers>
+            <Canvas  x:Name="canvas" Width="197">
+                <Label  Name="lblTitle" Content="Welcome" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="68" Width="490" FontSize="48" Canvas.Left="4" Canvas.Top="10"/>
+                <Label Name ="lblArtistAlbum" Content="To Orangify" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="457" Height="67" 
                materialDesign:ScrollViewerAssist.CornerRectangleVisibility="Visible"
-               FontSize="24"/>
+               FontSize="24" Canvas.Left="10" Canvas.Top="83"/>
+                <TextBlock Text="{Binding Content, ElementName=lblTitle}" FontSize="48" Canvas.Left="499" Canvas.Top="14"  />
+                <TextBlock Text="{Binding Content, ElementName=lblArtistAlbum}" FontSize="24" Canvas.Left="499" Canvas.Top="83"  />
+            </Canvas>
+
+        </StackPanel>
+
+
+
+
         <svl:WaveformTimeline x:Name="waveformTimeline"
-                                  Margin="3,215,1,10"
-                                  BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="5" />
+                                  Margin="3,164.171,1,10"
+                                  BorderThickness="1" Grid.Row="2" Grid.ColumnSpan="5" />
+
         <svl:DigitalClock Width="147"
                           x:Name="clockDisplay"
                           ShowHours="False"
                           ShowSubSeconds="True"
                           HorizontalAlignment="Center"
-                          Margin="10,134,144,101" Grid.Column="4" Grid.Row="1" />
+                          Margin="10,83.171,144,101" Grid.Column="4" Grid.Row="2" />
         <Button
             
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="27,15,25,36" Grid.Row="2" Height="Auto" Width="Auto">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="27,15,25,36" Grid.Row="3" Height="Auto" Width="Auto">
             <materialDesign:PackIcon
             Kind="SkipPrevious" Height="38" Width="22" />
         </Button>
@@ -61,7 +96,7 @@
           Command="{Binding PlayCommand, Source={StaticResource vm}}"
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="1" Margin="25,15,27,36" Grid.Row="2" Height="Auto" Width="Auto" >
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="1" Margin="25,15,27,36" Grid.Row="3" Height="Auto" Width="Auto" >
             <materialDesign:PackIcon
             Kind="Play"
                 
@@ -72,21 +107,21 @@
             Command="{Binding PauseCommand, Source={StaticResource vm}}"
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="2" Margin="26,15,26,36" Grid.Row="2" Height="Auto" Width="Auto" Click="Button_Click">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Grid.Column="2" Margin="26,15,26,36" Grid.Row="3" Height="Auto" Width="Auto" Click="Button_Click">
             <materialDesign:PackIcon
             Kind="Pause" />
         </Button>
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="26,15,26,36" Grid.Row="2" Grid.Column="3" Height="Auto" Width="Auto">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="26,15,26,36" Grid.Row="3" Grid.Column="3" Height="Auto" Width="Auto">
             <materialDesign:PackIcon
             Kind="SkipNext" Height="38" Width="22" />
         </Button>
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="123,15,130,36" Grid.Row="2" Grid.Column="4" Height="Auto" Width="Auto">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="123,15,130,36" Grid.Row="3" Grid.Column="4" Height="Auto" Width="Auto">
             <materialDesign:PackIcon
             Kind="Star" Height="38" Width="22" 
                 />
@@ -94,7 +129,7 @@
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
-          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="220,15,33,36" Grid.Row="2" Grid.Column="4" RenderTransformOrigin="-1.097,0.565" Height="Auto" Width="Auto">
+          Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="220,15,33,36" Grid.Row="3" Grid.Column="4" RenderTransformOrigin="-1.097,0.565" Height="Auto" Width="Auto">
             <materialDesign:PackIcon
             Kind="PlaylistAdd" Height="38" Width="22" />
         </Button>
