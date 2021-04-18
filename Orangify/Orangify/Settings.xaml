@@ -14,13 +14,13 @@
         BorderThickness="10"
         Title="Settings" Height="470.46" Width="800" ResizeMode="NoResize" WindowStyle="None" MouseDown="SettingsWindow_MouseDown" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label Content="Settings" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="41" Width="124" FontSize="26"/>
-        <Label Content="Language" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Height="41" Width="100" FontSize="18"/>
-        <ComboBox Name="cbSettingsLanguage" HorizontalAlignment="Left" Margin="159,78,0,0" VerticalAlignment="Top" Width="180">
+        <Label Content="Settings" Name="lblSettingsTitle" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="41" Width="124" FontSize="26"/>
+        <Label Content="Language" Name="lblSettingsLanguage" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Height="41" Width="100" FontSize="18"/>
+        <ComboBox Name="cbSettingsLanguage" HorizontalAlignment="Left" Margin="159,78,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="cbSettingsLanguage_SelectionChanged">
             <ComboBoxItem IsSelected="True">English</ComboBoxItem>
             <ComboBoxItem>Francais</ComboBoxItem>
         </ComboBox>
-        <Label Content="Library Source" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Height="41" Width="140" FontSize="18"/>
+        <Label Content="Library Source" Name="lblSettingsLibrarySource" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Height="41" Width="140" FontSize="18"/>
         <ListView Name="lvSettingsPaths" HorizontalAlignment="Left" Height="189" Margin="10,206,0,0" VerticalAlignment="Top" Width="772" Background="#FFE4E4E4">
             <ListView.View>
                 <GridView>
@@ -28,9 +28,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Add song to Library" Name="btAddSong" HorizontalAlignment="Left" Margin="590,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFileBtn_Click"/>
+        <Button Content="Add song to Library" Name="btSettingsAddSong" HorizontalAlignment="Left" Margin="590,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFileBtn_Click"/>
         <Button Content="Accept" Name="btSettingsAccept" HorizontalAlignment="Left" Margin="310,408,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAcceptBtn_Click"/>
-        <Button Content="Add Folder to Library" Name="btAddFolder" HorizontalAlignment="Left" Margin="388,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFolderBtn_Click" RenderTransformOrigin="0.637,0.491"/>
+        <Button Content="Add Folder to Library" Name="btSettingsAddFolder" HorizontalAlignment="Left" Margin="388,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFolderBtn_Click" RenderTransformOrigin="0.637,0.491"/>
         <Button Content="X" x:Name="btSettingsX" HorizontalAlignment="Left" Margin="721,10,0,0" VerticalAlignment="Top" Width="49" Click="SettingsXBtn_Click"/>
+        <Button Name="poop"  Content="Button" HorizontalAlignment="Left" Margin="415,78,0,0" VerticalAlignment="Top" Width="75" Click="poop_Click"/>
     </Grid>
 </Window>

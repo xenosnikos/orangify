@@ -83,7 +83,7 @@
                           HorizontalAlignment="Center"
                           Margin="10,83,144,101" Grid.Column="5" Grid.Row="2" />
         <Button
-            
+          Command="{Binding PreviousSongCommand, Source={StaticResource vm}}"
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
           Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="27,15,25,36" Grid.Row="3" Height="Auto" Width="Auto">
@@ -111,6 +111,7 @@
             Kind="Pause" />
         </Button>
         <Button
+          Command="{Binding NextSongCommand, Source={StaticResource vm}}"
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
           Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="26,15,26,36" Grid.Row="3" Grid.Column="4" Height="Auto" Width="Auto">

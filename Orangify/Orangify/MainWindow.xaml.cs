@@ -22,18 +22,17 @@ namespace Orangify
     /// </summary>
     public partial class MainWindow : Window
     {
-       // private bool userIsDraggingSlider = false;
+        // private bool userIsDraggingSlider = false;
 
         public MainWindow()
         {
 
-            try { 
+            try
+            {
                 InitializeComponent();
                 DispatcherTimer timer = new DispatcherTimer();
                 Sample_BASS.BassEngine engine = Sample_BASS.BassEngine.Instance;
                 engine.PropertyChanged += BassEngine_PropertyChanged;
-
-               
 
                 //Audio Controls
                 Sample_BASS.UIHelper.Bind(engine, "CanPlay", PlayButton, Button.IsEnabledProperty);
@@ -41,23 +40,20 @@ namespace Orangify
                 Sample_BASS.UIHelper.Bind(engine, "CanPause", PauseButton, Button.IsEnabledProperty);
 
                 //Dynamic 
+<<<<<<< Updated upstream
                 
 
+=======
+>>>>>>> Stashed changes
                 spectrumAnalyzer.RegisterSoundPlayer(engine);
                 waveformTimeline.RegisterSoundPlayer(engine);
-                
-
-
-               
-
-               
 
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 Console.WriteLine(ex.StackTrace);
                 MessageBox.Show("Fatal error: Database connection failed:\n" + ex.Message);
-                
+
             }
 
         }
@@ -97,7 +93,7 @@ namespace Orangify
                                 }
                                 catch (NotSupportedException)
                                 {
-                                   // albumArtPanel.AlbumArtImage = null;
+                                    // albumArtPanel.AlbumArtImage = null;
                                     // System.NotSupportedException:
                                     // No imaging component suitable to complete this operation was found.
                                 }
@@ -106,7 +102,7 @@ namespace Orangify
                         }
                         else
                         {
-                           // albumArtPanel.AlbumArtImage = null;
+                            // albumArtPanel.AlbumArtImage = null;
                         }
                     }
                     else
@@ -122,15 +118,6 @@ namespace Orangify
                     break;
             }
 
-        }
-
-        private void OpenFile()
-        {
-
-            Library lib = new Library();
-            Song currentSelectedSong = (Song)lib.lvSongs.SelectedItem;
-            var currentSelectedSongPath = currentSelectedSong.songPath;
-            Sample_BASS.BassEngine.Instance.OpenFile(currentSelectedSongPath);         
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -155,5 +142,6 @@ namespace Orangify
         {
 
         }
+
     }
 }

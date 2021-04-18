@@ -15,33 +15,81 @@ namespace Orangify
     /// </summary>
     public partial class Library : Window
     {
+        private static Library instance;
 
-        public string loadSelected()
+        public static Library Instance
         {
-            var currentSelectedSong = (Song)lvSongs.SelectedItem;
-            return currentSelectedSong.songPath;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Library();
+                    return instance;
+                }
+                return instance;
+            }
         }
 
+        private List<Song> songList;
+        public List<Song> SongList {
+            get
+            {
+                return songList;
+            }
+            set
+            {
+                songList = value;
+                lvSongs.ItemsSource = songList;
+            }
+        
+        }
 
+        public int CurrentSongIndex { get; set; }
 
-        public string songPathSelected;
+        public Song CurrentSong
+        {
+            get
+            {
+                return SongList[CurrentSongIndex];
+            }
+        }
 
-        Settings set = new Settings();
-        public List<Song> songList = new List<Song>();
-        internal int selectedIndex = 0;
-        public Library()
-
+        private Library()
         {
             try
             {
                 InitializeComponent();
-                Globals.ctx = new orangifyEntities1();
-                lvSongs.ItemsSource = Globals.ctx.Songs.ToList<Song>();
+                Globals.ctx = new orangifyEntities1(); 
+                SongList = Globals.ctx.Songs.ToList<Song>();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error initializing components: " + ex.Message);
             }
+        }
+
+        public void PlayNext()
+        {
+            CurrentSongIndex = (CurrentSongIndex + 1) % SongList.Count;
+            PlaySong();
+        }
+
+        public void PlayPrevious()
+        {
+            var index = CurrentSongIndex - 1;
+            if (index < 0)
+            {
+                index = SongList.Count - 1;
+            }
+            CurrentSongIndex = index;
+            PlaySong();
+        }
+
+        private void PlaySong()
+        {
+            Sample_BASS.BassEngine.Instance.OpenFile(CurrentSong.songPath);
+            if (Sample_BASS.BassEngine.Instance.CanPlay)
+                Sample_BASS.BassEngine.Instance.Play();
         }
 
         private void miSettings_Click(object sender, RoutedEventArgs e)
@@ -58,7 +106,8 @@ namespace Orangify
                 settings.lvSettingsPaths.Items.Refresh();
                 set.scanForSongFiles();
             }
-            lvSongs.ItemsSource = Globals.ctx.Songs.ToList<Song>();
+            SongList = Globals.ctx.Songs.ToList<Song>();
+
         }
 
         private void miExit_Click(object sender, RoutedEventArgs e)
@@ -85,18 +134,14 @@ namespace Orangify
 
         private void anotherWayToClick(object sender, RoutedEventArgs e)
         {
-            Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
+            CurrentSongIndex = ((System.Windows.Controls.ListView)sender).SelectedIndex;
+            PlaySong();
         }
 
         private void clickclick(object sender, RoutedEventArgs e)
         {
-            Sample_BASS.BassEngine.Instance.OpenFile(loadSelected());
-            if (Sample_BASS.BassEngine.Instance.CanPlay)
-                Sample_BASS.BassEngine.Instance.Play();
-
-            Song song = (Song)lvSongs.SelectedItem;
-            songPathSelected = song.songPath;
-
+            CurrentSongIndex = ((System.Windows.Controls.ListView)sender).SelectedIndex;
+            PlaySong();
         }
 
         private void miContextDelete_Click(object sender, RoutedEventArgs e)

@@ -31,6 +31,7 @@ namespace Orangify
             {
 
                 InitializeComponent();
+                Settings main;
 
                 lvSettingsPaths.ItemsSource = pathList;
             }
@@ -54,7 +55,7 @@ namespace Orangify
             Artist existingArtist;
             Album existingAlbum;
             
-            Library lib = new Library();
+            Library lib = Library.Instance;
             for (int i = 0; i < pathList.Count; i++)
             {
 
@@ -108,15 +109,15 @@ namespace Orangify
                 DateTime dt = DateTime.FromBinary(yearReleased);
 
                 Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath };
-                lib.songList.Add(song);
-
                 
+<<<<<<< Updated upstream
                     
                     
+=======
+>>>>>>> Stashed changes
                 tfile.Save();
                 Globals.ctx.Songs.Add(song);
                 Globals.ctx.SaveChanges();
-
             }
 
 
@@ -193,6 +194,24 @@ namespace Orangify
         private void SettingsXBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void cbSettingsLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbSettingsLanguage.Text == "English")
+            {
+                Globals.Language = "English";
+            }
+
+            if (cbSettingsLanguage.Text == "Francais")
+            {
+                Globals.Language = "Francais";
+            }
+        }
+
+        private void poop_Click(object sender, RoutedEventArgs e)
+        {
+            //Globals.setToFrench();
         }
     }
 }

@@ -19,14 +19,14 @@
     </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top" Margin="0,0,1325,0">
-            <MenuItem Header="_File"
+            <MenuItem Header="_File" Name="miFile"
                     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                     Background="{DynamicResource MaterialDesignPaper}"
                     TextElement.FontWeight="Medium"
                     TextElement.FontSize="14" Width="75">
-                <MenuItem Header="_Settings" Click="miSettings_Click"/>
+                <MenuItem Header="_Settings" Name="miSettings" Click="miSettings_Click"/>
                 <Separator />
-                <MenuItem Header="_Exit" Click="miExit_Click"/>
+                <MenuItem Header="_Exit" Name="miExit" Click="miExit_Click"/>
             </MenuItem>
         </Menu>
         <StatusBar 
@@ -44,11 +44,11 @@
         <ListView  Name="lvSongs" MouseDoubleClick="clickclick" Margin="0,0,0,0.2" Width="1344" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>
-                    <GridViewColumn Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist.Name}"/>
-                    <GridViewColumn Header="Album" Width="300"  DisplayMemberBinding="{Binding Album.Name}"/>
-                    <GridViewColumn Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased.Year}"/>
-                    <GridViewColumn Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
+                    <GridViewColumn x:Name="colSong" Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn x:Name="colArtist" Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist.Name}"/>
+                    <GridViewColumn x:Name="colAlbum" Header="Album" Width="300"  DisplayMemberBinding="{Binding Album.Name}"/>
+                    <GridViewColumn x:Name="colYear" Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased.Year}"/>
+                    <GridViewColumn x:Name="colLength" Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>
