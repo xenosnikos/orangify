@@ -36,7 +36,7 @@ namespace Orangify
             }
             catch (SystemException ex)
             {
-                System.Windows.MessageBox.Show("something fucked up" + ex.Message);
+                System.Windows.MessageBox.Show("something f'ed up" + ex.Message);
             }
         }
 
