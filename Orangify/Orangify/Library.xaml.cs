@@ -111,15 +111,14 @@ namespace Orangify
 
         private void clickEdit(object sender, RoutedEventArgs e)
         {
-            EditTag et = new EditTag();
+            EditTag et = new EditTag((Song)lvSongs.SelectedItem);
             et.Owner = this;
             if (et.ShowDialog() == true)
             {
-                Song selSong = (Song)lvSongs.SelectedItem;
-                et.tbTitle.Text = selSong.Title;
-                et.tbArtist.Text = selSong.Artist.ToString();
-                et.tbAlbum.Text = selSong.Album.ToString();
-                et.tbYear.Text = selSong.YearReleased.ToString();
+                
+                
+                
+
                 
 
 
