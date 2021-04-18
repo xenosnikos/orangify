@@ -79,10 +79,7 @@ namespace Orangify
                     {
                         existingArtist = new Artist { Name = artist };
                     }
-                    else
-                    {
-                        return;
-                    }
+                    
 
                 }
 
@@ -93,12 +90,9 @@ namespace Orangify
 
                     if (existingAlbum == null)
                     {
-                        existingAlbum = new Album { Name = artist };
+                        existingAlbum = new Album { Name = album };
                     }
-                    else
-                    {
-                        return;
-                    }
+                    
 
                 }
 
@@ -115,7 +109,11 @@ namespace Orangify
 
                 Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath };
                 lib.songList.Add(song);
-                tfile.Save();
+
+                
+                    
+                    
+                    tfile.Save();
                 Globals.ctx.Songs.Add(song);
                 Globals.ctx.SaveChanges();
 
