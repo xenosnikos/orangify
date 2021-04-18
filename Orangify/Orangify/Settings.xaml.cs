@@ -50,23 +50,31 @@ namespace Orangify
 
         private void SettingsAcceptBtn_Click(object sender, RoutedEventArgs e)
         {
-           
+
             Artist existingArtist;
             Album existingAlbum;
             
             Library lib = new Library();
             for (int i = 0; i < pathList.Count; i++)
             {
-                
+
                 var tfile = TagLib.File.Create(pathList[i]);
                 string title = tfile.Tag.Title;
-
-                string artist = tfile.Tag.Performers[0];
-               
-                using (var context = new orangifyEntities1() )
+                string artist;
+                try
                 {
-                     existingArtist = context.Artists.Where<Artist>(S => Name == artist)as Artist;
-                    
+                    artist = tfile.Tag.Performers[0];
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("There is a problem with that file");
+                    this.Close();
+                    return;
+                }
+                using (var context = new orangifyEntities1())
+                {
+                    existingArtist = context.Artists.Where<Artist>(S => Name == artist) as Artist;
+
                     if (existingArtist == null)
                     {
                         existingArtist = new Artist { Name = artist };
@@ -97,14 +105,14 @@ namespace Orangify
                 string filePath = pathList[i];
                 TimeSpan length = tfile.Properties.Duration;
                 Console.WriteLine("Title: {0}, duration: {1}", title, length);
-               
+
                 Album albumObj = new Album { Name = album };
-                
-               
+
+
                 long yearReleased = tfile.Tag.Year;
-                
+
                 DateTime dt = DateTime.FromBinary(yearReleased);
-            
+
                 Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath };
                 lib.songList.Add(song);
                 tfile.Save();
