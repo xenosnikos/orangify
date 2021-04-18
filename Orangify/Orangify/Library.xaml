@@ -23,7 +23,7 @@
                     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                     Background="{DynamicResource MaterialDesignPaper}"
                     TextElement.FontWeight="Medium"
-                    TextElement.FontSize="14" Width="75">
+                    TextElement.FontSize="14" Width="163">
                 <MenuItem Header="_Settings" Name="miSettings" Click="miSettings_Click"/>
                 <Separator />
                 <MenuItem Header="_Exit" Name="miExit" Click="miExit_Click"/>

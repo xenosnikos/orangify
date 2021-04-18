@@ -98,6 +98,7 @@ namespace Orangify
             settings.Owner = this;
             //settings.ShowDialog();
 
+
             if (settings.ShowDialog() == true)
             {
 
@@ -108,6 +109,7 @@ namespace Orangify
             }
             SongList = Globals.ctx.Songs.ToList<Song>();
 
+            Settings.Instance.cbSettingsLanguage.SelectedItem = Settings.Instance.setLanguage;
         }
 
         private void miExit_Click(object sender, RoutedEventArgs e)
@@ -161,11 +163,6 @@ namespace Orangify
             if (et.ShowDialog() == true)
             {
                 
-                
-                
-
-                
-
 
             }
 

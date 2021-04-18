@@ -24,6 +24,7 @@ namespace Orangify
             LibraryWindow.Top = 500;
             LibraryWindow.Left = 20;
             LibraryWindow.Show();
+
         }
     }
 }

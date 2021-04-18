@@ -40,11 +40,6 @@ namespace Orangify
                 Sample_BASS.UIHelper.Bind(engine, "CanPause", PauseButton, Button.IsEnabledProperty);
 
                 //Dynamic 
-<<<<<<< Updated upstream
-                
-
-=======
->>>>>>> Stashed changes
                 spectrumAnalyzer.RegisterSoundPlayer(engine);
                 waveformTimeline.RegisterSoundPlayer(engine);
 
