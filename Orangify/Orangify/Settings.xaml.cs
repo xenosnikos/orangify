@@ -53,6 +53,7 @@ namespace Orangify
            
             Artist existingArtist;
             Album existingAlbum;
+            
             Library lib = new Library();
             for (int i = 0; i < pathList.Count; i++)
             {

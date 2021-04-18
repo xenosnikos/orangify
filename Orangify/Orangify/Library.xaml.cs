@@ -96,6 +96,7 @@ namespace Orangify
 
             Song song = (Song)lvSongs.SelectedItem;
             songPathSelected = song.songPath;
+
         }
 
         private void miContextDelete_Click(object sender, RoutedEventArgs e)
