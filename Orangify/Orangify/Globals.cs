@@ -9,5 +9,8 @@ namespace Orangify
     public class Globals
     {
         public static orangifyEntities1 ctx;
+
     }
+
+    
 }

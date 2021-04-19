@@ -22,18 +22,10 @@ namespace Orangify
         }
         private void LoadSong(object currentSelectedSong)
         {
-
-            
             Song ss = new Song();
             var currentSelectedSongPath = ss.songPath;
             Sample_BASS.BassEngine.Instance.OpenFile(currentSelectedSongPath);
-            
-
-
         }
-        
-
-
     }
 
 }

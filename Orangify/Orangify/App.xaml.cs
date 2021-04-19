@@ -15,24 +15,16 @@ namespace Orangify
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            localization();
-
             Equalizer EQWindow = new Equalizer();
             EQWindow.Top = 20;
             EQWindow.Left = 730;
             EQWindow.Show();
 
-            Library LibraryWindow = new Library();
+            Library LibraryWindow = Library.Instance;
             LibraryWindow.Top = 500;
             LibraryWindow.Left = 20;
             LibraryWindow.Show();
-        }
 
-        private void localization()
-        {
-            //TODO: Implement localization
-            string language;
-            
         }
     }
 }

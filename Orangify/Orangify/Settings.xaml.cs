@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.IO;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Orangify
 {
@@ -23,16 +15,38 @@ namespace Orangify
     /// 
     public partial class Settings : Window
     {
-        public List<string> pathList = new List<string>();
 
+        private static Settings instance;
+        
+        
+
+        public static Settings Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Settings();
+                    return instance;
+                }
+                return instance;
+            }
+        }
+
+        public List<string> pathList = new List<string>();
+        public string setLanguage = "";
+        
         public Settings()
         {
+
             try
             {
 
                 InitializeComponent();
+                Settings main;
 
                 lvSettingsPaths.ItemsSource = pathList;
+                cbSettingsLanguage.SelectedItem = setLanguage;
             }
             catch (SystemException ex)
             {
@@ -54,7 +68,7 @@ namespace Orangify
             Artist existingArtist;
             Album existingAlbum;
             
-            Library lib = new Library();
+            Library lib = Library.Instance;
             for (int i = 0; i < pathList.Count; i++)
             {
 
@@ -108,15 +122,11 @@ namespace Orangify
                 DateTime dt = DateTime.FromBinary(yearReleased);
 
                 Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath };
-                lib.songList.Add(song);
-
                 
-                    
-                    
                 tfile.Save();
                 Globals.ctx.Songs.Add(song);
                 Globals.ctx.SaveChanges();
-
+                cbSettingsLanguage.SelectedValue = setLanguage;
             }
 
 
@@ -193,6 +203,60 @@ namespace Orangify
         private void SettingsXBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+
+
+        private void cbSettingsLanguage_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbSettingsLanguage.SelectedValue.ToString() == "Francais")
+            {
+                setLanguage = "Francais";
+                cbSettingsLanguage.SelectedValue = "Francais";
+
+                lblSettingsTitle.Content = "Paramètres";
+                lblSettingsLanguage.Content = "Langue";
+                lblSettingsLibrarySource.Content = "Contenu";
+                btSettingsAddFolder.Content = "Ajouter Dossier";
+                btSettingsAddSong.Content = "Ajouter Chanson";
+                btSettingsAccept.Content = "Accepter";
+
+                Library.Instance.colSong.Header = "Chanson";
+                Library.Instance.colArtist.Header = "Artiste";
+                Library.Instance.colLength.Header = "Durée";
+                Library.Instance.colYear.Header = "Année";
+                Library.Instance.miFile.Header = "Fichier";
+                Library.Instance.miSettings.Header = "Paramètres";
+                Library.Instance.miExit.Header = "Quitter";
+
+                
+            } 
+            if (cbSettingsLanguage.SelectedValue.ToString() == "English")
+            {
+                setLanguage = "English";
+                cbSettingsLanguage.SelectedValue = "English";
+
+                lblSettingsTitle.Content = "Settings";
+                lblSettingsLanguage.Content = "Language";
+                lblSettingsLibrarySource.Content = "Library Source";
+                btSettingsAddFolder.Content = "Add Folder to Library";
+                btSettingsAddSong.Content = "Add song to Library";
+                btSettingsAccept.Content = "Accept";
+
+                Library.Instance.colSong.Header = "Song";
+                Library.Instance.colArtist.Header = "Artist";
+                Library.Instance.colLength.Header = "Length";
+                Library.Instance.colYear.Header = "Year";
+                Library.Instance.miFile.Header = "File";
+                Library.Instance.miSettings.Header = "Settings";
+                Library.Instance.miExit.Header = "Quit";
+
+
+            }
+
+            cbSettingsLanguage.SelectedValue = setLanguage;
+
+
         }
     }
 }
