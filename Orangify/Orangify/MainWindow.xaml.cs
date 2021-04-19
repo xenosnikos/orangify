@@ -23,6 +23,20 @@ namespace Orangify
     public partial class MainWindow : Window
     {
         // private bool userIsDraggingSlider = false;
+        private static MainWindow instance;
+
+        public static MainWindow Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MainWindow();
+                    return instance;
+                }
+                return instance;
+            }
+        }
 
         public MainWindow()
         {
@@ -138,5 +152,16 @@ namespace Orangify
 
         }
 
+        private void MainWindow_LocationChanged(object sender, EventArgs e)
+        {
+            if (tglLock.IsOn)
+            {
+                Equalizer.Instance.Top = this.Top;
+                Equalizer.Instance.Left = this.Left + 710;
+
+                Library.Instance.Top = this.Top + 470;
+                Library.Instance.Left = this.Left;
+            }
+        }
     }
 }

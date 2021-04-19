@@ -31,7 +31,8 @@ namespace Orangify
         }
 
         private List<Song> songList;
-        public List<Song> SongList {
+        public List<Song> SongList
+        {
             get
             {
                 return songList;
@@ -41,7 +42,7 @@ namespace Orangify
                 songList = value;
                 lvSongs.ItemsSource = songList;
             }
-        
+
         }
 
         public int CurrentSongIndex { get; set; }
@@ -59,7 +60,7 @@ namespace Orangify
             try
             {
                 InitializeComponent();
-                Globals.ctx = new orangifyEntities1(); 
+                Globals.ctx = new orangifyEntities1();
                 SongList = Globals.ctx.Songs.ToList<Song>();
             }
             catch (Exception ex)
@@ -164,7 +165,7 @@ namespace Orangify
             et.Owner = this;
             if (et.ShowDialog() == true)
             {
-                
+
 
             }
 
