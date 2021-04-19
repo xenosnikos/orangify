@@ -144,8 +144,8 @@ namespace Orangify
                 cbSettingsLanguage.SelectedValue = setLanguage;
 
                 lvSettingsPaths.Items.Refresh();
-                this.DialogResult = true;
-                //this.Close();
+                //this.DialogResult = true;
+                this.Close();
             }
         }
 

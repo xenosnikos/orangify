@@ -33,9 +33,15 @@ namespace Orangify
             tbAlbum.Text = song.Album.Name.ToString();
             tbYear.Text = song.YearReleased.Value.Year.ToString();
             
+            if (currSongArtwork == null)
+            {
+                imageViewer.Source = null;
+            } else
+            {
+                imageViewer.Source = ByteArrayToBitmapImage(song.Artwork);
+            }
             
             
-            imageViewer.Source = ByteArrayToBitmapImage(song.Artwork);
         }
 
 
@@ -46,11 +52,19 @@ namespace Orangify
             currentSong.Title = tbTitle.Text;
             currentSong.Artist.Name = tbArtist.Text;
             currentSong.Album.Name = tbArtist.Text;
-            MemoryStream ms = new MemoryStream(currentSong.Artwork);
+            if (currentSong.Artwork == null)
+            {
+                return;
+            } else
+            {
+                MemoryStream ms = new MemoryStream(currentSong.Artwork);
 
-            byte[] songArtwork = ms.ToArray();
+                byte[] songArtwork = ms.ToArray();
 
-            currentSong.Artwork = songArtwork;
+                currentSong.Artwork = songArtwork;
+            }
+
+            
             Globals.ctx.SaveChanges();
             this.Close();
 
@@ -63,7 +77,7 @@ namespace Orangify
 
         byte[] currSongArtwork;
         
-        public void Button_Click(object sender, RoutedEventArgs e)
+        public void btnImage_Click(object sender, RoutedEventArgs e)
         {
 
             OpenFileDialog dlg = new OpenFileDialog();
@@ -76,8 +90,16 @@ namespace Orangify
                 {
                     currSongArtwork = File.ReadAllBytes(dlg.FileName); // ex IOException
                     tbImage.Visibility = Visibility.Hidden; // hide text on the button
-                    BitmapImage bitmap = ByteArrayToBitmapImage(currSongArtwork); // ex: SystemException
-                    imageViewer.Source = bitmap;
+                    if(currSongArtwork == null)
+                    {
+                        imageViewer.Source = null;
+                    } else
+                    {
+                        BitmapImage bitmap = ByteArrayToBitmapImage(currSongArtwork); // ex: SystemException
+                        imageViewer.Source = bitmap;
+                    }
+                    
+                    
                 }
                 catch (Exception ex) when (ex is SystemException || ex is IOException)
                 {
@@ -88,15 +110,27 @@ namespace Orangify
 
         public static BitmapImage ByteArrayToBitmapImage(byte[] array)
         {
-            using (var ms = new System.IO.MemoryStream(array))
-            {
-                var image = new BitmapImage();
-                image.BeginInit();
-                image.CacheOption = BitmapCacheOption.OnLoad; // here
-                image.StreamSource = ms;
-                image.EndInit();
-                return image;
-            }
+                using (var ms = new MemoryStream(array))
+                {
+                    var image = new BitmapImage();
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad; // here
+                    image.StreamSource = ms;
+                    image.EndInit();
+                    return image;
+                }
+        }
+
+
+
+        private void tbAlbum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnDialogUpdate.IsEnabled = true;
+        }
+
+        private void tbYear_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnDialogUpdate.IsEnabled = true;
         }
 
         private void tbTitle_TextChanged(object sender, TextChangedEventArgs e)
@@ -109,14 +143,5 @@ namespace Orangify
             btnDialogUpdate.IsEnabled = true;
         }
 
-        private void tbAlbum_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            btnDialogUpdate.IsEnabled = true;
-        }
-
-        private void tbYear_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            btnDialogUpdate.IsEnabled = true;
-        }
     }
 }
