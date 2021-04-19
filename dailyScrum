@@ -1,3 +1,32 @@
+April 19th
+
+Nick 
+1.things done
+Marquee, volume, editGui 
+2.things to do 
+Edit function
+3.blocks
+none so far
+
+Taline
+1.things done
+got the next song and last song buttons and language settings to work.
+2.things to do 
+Will try to help complete the edit form, get the unit testing done and get ready for presentation.
+3.blocks
+Biggest challenge was to try and have the windows communicate but now this is no longer a block.
+
+Phil
+1.things done
+ Implemented the Next/Previous song methods
+2.things to do 
+Complete localization options and further polish of the UI
+3.blocks
+Got stuck with getting the Next song to work, figured out how to access instances of other windows
+
+
+
+
 April 16th
 Nick
 
