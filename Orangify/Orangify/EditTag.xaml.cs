@@ -31,12 +31,14 @@ namespace Orangify
             tbTitle.Text = song.Title;
             tbArtist.Text = song.Artist.Name.ToString();
             tbAlbum.Text = song.Album.Name.ToString();
-            tbYear.Text = song.YearReleased.ToString();
+            tbYear.Text = song.YearReleased.Value.Year.ToString();
             
             
             
             imageViewer.Source = ByteArrayToBitmapImage(song.Artwork);
         }
+
+
 
         private void btnDialogUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -44,6 +46,11 @@ namespace Orangify
             currentSong.Title = tbTitle.Text;
             currentSong.Artist.Name = tbArtist.Text;
             currentSong.Album.Name = tbArtist.Text;
+            MemoryStream ms = new MemoryStream(currentSong.Artwork);
+
+            byte[] songArtwork = ms.ToArray();
+
+            currentSong.Artwork = songArtwork;
             Globals.ctx.SaveChanges();
             this.Close();
 
@@ -92,6 +99,24 @@ namespace Orangify
             }
         }
 
+        private void tbTitle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnDialogUpdate.IsEnabled = true;
+        }
 
+        private void tbArtist_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnDialogUpdate.IsEnabled = true;
+        }
+
+        private void tbAlbum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnDialogUpdate.IsEnabled = true;
+        }
+
+        private void tbYear_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnDialogUpdate.IsEnabled = true;
+        }
     }
 }
