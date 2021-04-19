@@ -71,6 +71,7 @@ namespace Orangify
         public void PlayNext()
         {
             CurrentSongIndex = (CurrentSongIndex + 1) % SongList.Count;
+            lvSongs.SelectedItem = CurrentSong;
             PlaySong();
         }
 
@@ -82,6 +83,7 @@ namespace Orangify
                 index = SongList.Count - 1;
             }
             CurrentSongIndex = index;
+            lvSongs.SelectedItem = CurrentSong;
             PlaySong();
         }
 
