@@ -17,8 +17,8 @@ namespace Orangify
     {
 
         private static Settings instance;
-        
-        
+
+
 
         public static Settings Instance
         {
@@ -35,7 +35,7 @@ namespace Orangify
 
         public List<string> pathList = new List<string>();
         public string setLanguage = "";
-        
+
         public Settings()
         {
 
@@ -67,11 +67,10 @@ namespace Orangify
 
             Artist existingArtist;
             Album existingAlbum;
-            
+
             Library lib = Library.Instance;
             for (int i = 0; i < pathList.Count; i++)
             {
-
                 var tfile = TagLib.File.Create(pathList[i]);
                 string title = tfile.Tag.Title;
                 string artist;
@@ -93,7 +92,7 @@ namespace Orangify
                     {
                         existingArtist = new Artist { Name = artist };
                     }
-                    
+
 
                 }
 
@@ -106,7 +105,7 @@ namespace Orangify
                     {
                         existingAlbum = new Album { Name = album };
                     }
-                    
+
 
                 }
 
@@ -115,32 +114,41 @@ namespace Orangify
                 Console.WriteLine("Title: {0}, duration: {1}", title, length);
 
                 Album albumObj = new Album { Name = album };
+                byte[] songArtwork;
+
+                try
+                {
+                    MemoryStream ms = new MemoryStream(tfile.Tag.Pictures[0].Data.Data);
+                    songArtwork = ms.ToArray();
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    songArtwork = null;
+                }
 
 
 
-                MemoryStream ms = new MemoryStream(tfile.Tag.Pictures[0].Data.Data);
-                
-                byte[] songArtwork = ms.ToArray();
+
 
                 long yearReleased = tfile.Tag.Year;
 
-                
-                
+
+
                 DateTime dt = DateTime.FromBinary(yearReleased);
 
-                Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath, Artwork= songArtwork };
-                
+                Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath, Artwork = songArtwork };
+
                 tfile.Save();
                 Globals.ctx.Songs.Add(song);
                 Globals.ctx.SaveChanges();
                 cbSettingsLanguage.SelectedValue = setLanguage;
+
+                lvSettingsPaths.Items.Refresh();
+                this.DialogResult = true;
+                //this.Close();
             }
-
-
-            lvSettingsPaths.Items.Refresh();
-            this.DialogResult = true;
-            //this.Close();
         }
+
 
         public void scanForSongFiles()
         {
@@ -236,8 +244,8 @@ namespace Orangify
                 Library.Instance.miSettings.Header = "Paramètres";
                 Library.Instance.miExit.Header = "Quitter";
 
-                
-            } 
+
+            }
             if (cbSettingsLanguage.SelectedValue.ToString() == "English")
             {
                 setLanguage = "English";
