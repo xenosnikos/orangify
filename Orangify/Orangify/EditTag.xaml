@@ -16,12 +16,9 @@
         <Label Content="Year:" HorizontalAlignment="Left" Margin="120,20,0,0" VerticalAlignment="Top" Grid.Row="4" Height="36" Width="144" FontSize="20"/>
         <Label Content="Artwork" HorizontalAlignment="Left" Margin="91,10,0,0" VerticalAlignment="Top" Grid.Row="1" Height="36" Width="144" FontSize="20" Grid.Column="2"/>
         <Button Name="btnImage" Grid.Column="2" HorizontalAlignment="Left" Margin="49,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="186" Height="138" Grid.RowSpan="2" Click="Button_Click" >
-            <Grid>
-                <TextBlock x:Name="tbImage" Text="Click to pick picture" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Image Name="imageViewer" Stretch="UniformToFill" />
-
-
-                </TextBlock>
+            <Grid Width="120" Height="120">
+                <TextBlock x:Name="tbImage" Text="Click to pick picture" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Image Name="imageViewer" Stretch="UniformToFill" />
             </Grid>
         </Button>
         <TextBox Name="tbArtist" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="2"/>
