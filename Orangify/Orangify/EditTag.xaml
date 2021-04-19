@@ -7,23 +7,14 @@
         mc:Ignorable="d"
         Title="EditTag" Height="447.598" Width="832.028" Foreground="#FFF3E9E9" Background="#FF151515">
     <Grid Margin="0,0,2,2">
-        <Grid HorizontalAlignment="Left" Height="395" Margin="10,10,0,0" VerticalAlignment="Top" Width="478">
-            <TextBox Name="tbArtist" HorizontalAlignment="Left" Height="36" Margin="278,141,-18,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="218" FontSize="20"/>
-            <TextBox Name="tbAlbum" HorizontalAlignment="Left" Height="36" Margin="278,211,-18,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="218" FontSize="20"/>
-            <TextBox Name="tbYear" HorizontalAlignment="Left" Height="36" Margin="278,276,-18,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="218" FontSize="20"/>
-            <TextBox x:Name="tbTitle" HorizontalAlignment="Left" Height="36" Margin="278,82,-18,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="218" FontSize="20" Foreground="White" BorderBrush="#89893737">
-                <TextBox.Background>
-                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
-                </TextBox.Background>
-            </TextBox>
-        </Grid>
+        <TextBox Name="tbTitle" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="1"/>
         <Button x:Name="btnDialogUpdate" Content="Update" IsEnabled="False" HorizontalAlignment="Left" Margin="61,0,0,0" VerticalAlignment="Top" Width="137"  Grid.Column="1" Grid.Row="5" Height="53" Click="btnDialogUpdate_Click"/>
         <Button x:Name="btnDialogDone" IsDefault="True" Content="Done" HorizontalAlignment="Left" Margin="51,10,0,0" VerticalAlignment="Top" Width="163"  Grid.Column="1" Height="52" Click="btnDialogDone_Click"/>
-        <Label Content="Song Title: " HorizontalAlignment="Left" Margin="120,20,0,0" VerticalAlignment="Top" Grid.Row="1" Height="39" Width="144" FontSize="20"/>
-        <Label Content="Album:" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Grid.Row="3" Height="39" Width="144" FontSize="20"/>
-        <Label Content="Artist: " HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Grid.Row="2" Height="39" Width="144" FontSize="20"/>
-        <Label Content="Year:" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Grid.Row="4" Height="39" Width="144" FontSize="20"/>
-        <Label Content="Artwork" HorizontalAlignment="Left" Margin="91,10,0,0" VerticalAlignment="Top" Grid.Row="1" Height="39" Width="144" FontSize="20" Grid.Column="2"/>
+        <Label Content="Song Title: " HorizontalAlignment="Left" Margin="120,23,0,0" VerticalAlignment="Top" Grid.Row="1" Height="36" Width="144" FontSize="20"/>
+        <Label Content="Album:" HorizontalAlignment="Left" Margin="120,20,0,0" VerticalAlignment="Top" Grid.Row="3" Height="36" Width="144" FontSize="20"/>
+        <Label Content="Artist: " HorizontalAlignment="Left" Margin="120,20,0,0" VerticalAlignment="Top" Grid.Row="2" Height="36" Width="144" FontSize="20"/>
+        <Label Content="Year:" HorizontalAlignment="Left" Margin="120,20,0,0" VerticalAlignment="Top" Grid.Row="4" Height="36" Width="144" FontSize="20"/>
+        <Label Content="Artwork" HorizontalAlignment="Left" Margin="91,10,0,0" VerticalAlignment="Top" Grid.Row="1" Height="36" Width="144" FontSize="20" Grid.Column="2"/>
         <Button Name="btnImage" Grid.Column="2" HorizontalAlignment="Left" Margin="49,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="186" Height="138" Grid.RowSpan="2" Click="Button_Click" >
             <Grid>
                 <TextBlock x:Name="tbImage" Text="Click to pick picture" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -33,6 +24,10 @@
                 </TextBlock>
             </Grid>
         </Button>
+        <TextBox Name="tbArtist" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Name="tbAlbum" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="3"/>
+        <TextBox Name="tbYear" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="4"/>
+
 
 
         <Grid.ColumnDefinitions>
