@@ -11,7 +11,11 @@
             <TextBox Name="tbArtist" HorizontalAlignment="Left" Height="36" Margin="278,141,-18,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="218" FontSize="20"/>
             <TextBox Name="tbAlbum" HorizontalAlignment="Left" Height="36" Margin="278,211,-18,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="218" FontSize="20"/>
             <TextBox Name="tbYear" HorizontalAlignment="Left" Height="36" Margin="278,276,-18,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="218" FontSize="20"/>
-            <TextBox x:Name="tbTitle" HorizontalAlignment="Left" Height="36" Margin="278,82,-18,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="218" FontSize="20" Foreground="White"/>
+            <TextBox x:Name="tbTitle" HorizontalAlignment="Left" Height="36" Margin="278,82,-18,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="218" FontSize="20" Foreground="White" BorderBrush="#89893737">
+                <TextBox.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
+                </TextBox.Background>
+            </TextBox>
         </Grid>
         <Button x:Name="btnDialogUpdate" Content="Update" IsEnabled="False" HorizontalAlignment="Left" Margin="61,0,0,0" VerticalAlignment="Top" Width="137"  Grid.Column="1" Grid.Row="5" Height="53" Click="btnDialogUpdate_Click"/>
         <Button x:Name="btnDialogDone" IsDefault="True" Content="Done" HorizontalAlignment="Left" Margin="51,10,0,0" VerticalAlignment="Top" Width="163"  Grid.Column="1" Height="52" Click="btnDialogDone_Click"/>

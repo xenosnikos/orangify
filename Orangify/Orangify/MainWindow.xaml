@@ -33,6 +33,9 @@
             <RowDefinition Height="81*"/>
             <RowDefinition Height="33*" />
         </Grid.RowDefinitions>
+        <svl:SpectrumAnalyzer x:Name="spectrumAnalyzer"
+                                  Margin="10,10,26,101"
+                                  BarCount="16" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="2" />
         <Label Content="Orangify" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.021,0.156" Grid.ColumnSpan="4" Height="50" Width="217" Margin="10,10,0,0" FontSize="36"/>
 
 
@@ -40,7 +43,7 @@
             <StackPanel.Resources>
                 <local:NegatingConverter x:Key="NegatingConverter" />
                 <Storyboard x:Key="slide">
-                    <DoubleAnimation From="0" To="{Binding Width, ElementName=canvas, Converter={StaticResource NegatingConverter}}" Duration="00:00:5"
+                    <DoubleAnimation From="0" To="{Binding Width, Converter={StaticResource NegatingConverter}, ElementName=canvas}" Duration="00:00:5"
                       Storyboard.TargetProperty="X"
                       Storyboard.TargetName="transferCurreny"
                       RepeatBehavior="Forever"/>
@@ -50,21 +53,20 @@
                 <TranslateTransform x:Name="transferCurreny" X="0"/>
             </StackPanel.RenderTransform>
             <StackPanel.Triggers>
-                <EventTrigger RoutedEvent="StackPanel.Loaded">
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                     <BeginStoryboard Storyboard="{StaticResource slide}" />
                 </EventTrigger>
-                <EventTrigger RoutedEvent="StackPanel.SizeChanged">
+                <EventTrigger RoutedEvent="FrameworkElement.SizeChanged">
                     <BeginStoryboard Storyboard="{StaticResource slide}" />
                 </EventTrigger>
             </StackPanel.Triggers>
             <Canvas  x:Name="canvas" Width="{Binding ActualWidth, ElementName=stack}">
-
-                <Label  Name="lblTitle" Content="Welcome" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="68" FontSize="48" Canvas.Left="4" Canvas.Top="10"/>
-                <Label Name ="lblArtistAlbum" Content="To Orangify" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"  Height="67" 
-              
-               FontSize="24" Canvas.Left="10" Canvas.Top="83"/>
                 <TextBlock Text="{Binding Content, ElementName=lblTitle}" FontSize="48" Canvas.Left="733" Canvas.Top="14"  />
                 <TextBlock Text="{Binding Content, ElementName=lblArtistAlbum}" FontSize="24" Canvas.Left="733" Canvas.Top="87"  />
+                <Label  x:Name="lblTitle" Content="Welcome" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="68" FontSize="48" Canvas.Left="4" Canvas.Top="10"/>
+                <Label x:Name ="lblArtistAlbum" Content="To Orangify" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"  Height="67" 
+              
+               FontSize="24" Canvas.Left="10" Canvas.Top="83"/>
             </Canvas>
 
         </StackPanel>
@@ -73,7 +75,7 @@
 
 
         <svl:WaveformTimeline x:Name="waveformTimeline"
-                                  Margin="3,164,1,10"
+                                  Margin="3,173,1,10"
                                   BorderThickness="1" Grid.Row="2" Grid.ColumnSpan="6" />
 
         <svl:DigitalClock Width="147"
@@ -91,7 +93,7 @@
             Kind="SkipPrevious" Height="38" Width="22" />
         </Button>
         <Button
-          Name="PlayButton"
+          x:Name="PlayButton"
           Command="{Binding PlayCommand, Source={StaticResource vm}}"
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
@@ -102,7 +104,7 @@
                  />
         </Button>
         <Button
-            Name="PauseButton"
+            x:Name="PauseButton"
             Command="{Binding PauseCommand, Source={StaticResource vm}}"
           Style="{StaticResource MaterialDesignIconButton}"
           ToolTip="MaterialDesignIconButton"
@@ -132,8 +134,5 @@
             <materialDesign:PackIcon
             Kind="PlaylistAdd" Height="38" Width="22" />
         </Button>
-        <svl:SpectrumAnalyzer x:Name="spectrumAnalyzer"
-                                  Margin="10,10,26,101"
-                                  BarCount="16" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="2" />
     </Grid>
 </Window>
