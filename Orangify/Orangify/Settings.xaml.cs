@@ -124,6 +124,8 @@ namespace Orangify
 
                 long yearReleased = tfile.Tag.Year;
 
+                
+                
                 DateTime dt = DateTime.FromBinary(yearReleased);
 
                 Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath, Artwork= songArtwork };
