@@ -29,9 +29,10 @@ namespace Orangify
             InitializeComponent();
             currentSong = song;
             tbTitle.Text = song.Title;
-            tbArtist.Text = song.Artist.ToString();
-            tbAlbum.Text = song.Album.ToString();
+            tbArtist.Text = song.Artist.Name.ToString();
+            tbAlbum.Text = song.Album.Name.ToString();
             tbYear.Text = song.YearReleased.ToString();
+
         }
 
         private void btnDialogUpdate_Click(object sender, RoutedEventArgs e)

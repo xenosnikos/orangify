@@ -117,11 +117,16 @@ namespace Orangify
                 Album albumObj = new Album { Name = album };
 
 
+
+                MemoryStream ms = new MemoryStream(tfile.Tag.Pictures[0].Data.Data);
+                
+                byte[] songArtwork = ms.ToArray();
+
                 long yearReleased = tfile.Tag.Year;
 
                 DateTime dt = DateTime.FromBinary(yearReleased);
 
-                Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath };
+                Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath, Artwork= songArtwork };
                 
                 tfile.Save();
                 Globals.ctx.Songs.Add(song);
