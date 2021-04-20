@@ -32,15 +32,8 @@ namespace Orangify
             tbArtist.Text = song.Artist.Name.ToString();
             tbAlbum.Text = song.Album.Name.ToString();
             tbYear.Text = song.YearReleased.Value.Year.ToString();
-
-            if (currSongArtwork == null)
-            {
-                imageViewer.Source = null;
-            }
-            else
-            {
-                imageViewer.Source = ByteArrayToBitmapImage(song.Artwork);
-            }
+            imageViewer.Source = ByteArrayToBitmapImage(song.Artwork);
+            
 
 
         }
