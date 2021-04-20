@@ -33,9 +33,7 @@ namespace Orangify
             tbAlbum.Text = song.Album.Name.ToString();
             tbYear.Text = song.YearReleased.Value.Year.ToString();
             imageViewer.Source = ByteArrayToBitmapImage(song.Artwork);
-            
-
-
+    
         }
 
 
