@@ -116,8 +116,8 @@ namespace Orangify
                 byte[] songArtwork;
 
                
-                    MemoryStream ms = new MemoryStream(tfile.Tag.Pictures[0].Data.Data);
-                    songArtwork = ms.ToArray();
+                    //MemoryStream ms = new MemoryStream(tfile.Tag.Pictures[0].Data.Data);
+                    //songArtwork = ms.ToArray();
                 
                
 
@@ -131,7 +131,7 @@ namespace Orangify
 
                 DateTime dt = DateTime.FromBinary(yearReleased);
 
-                Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath, Artwork = songArtwork };
+                Song song = new Song { Title = title, Artist = existingArtist, Album = existingAlbum, Length = length, YearReleased = dt, songPath = filePath };
 
                 tfile.Save();
                 Globals.ctx.Songs.Add(song);

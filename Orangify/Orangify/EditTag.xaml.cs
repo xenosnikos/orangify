@@ -32,7 +32,7 @@ namespace Orangify
             tbArtist.Text = song.Artist.Name.ToString();
             tbAlbum.Text = song.Album.Name.ToString();
             tbYear.Text = song.YearReleased.Value.Year.ToString();
-            imageViewer.Source = ByteArrayToBitmapImage(song.Artwork);
+            //imageViewer.Source = ByteArrayToBitmapImage(song.Artwork);
             
 
 
@@ -92,8 +92,8 @@ namespace Orangify
                     }
                     else
                     {
-                        BitmapImage bitmap = ByteArrayToBitmapImage(currSongArtwork); // ex: SystemException
-                        imageViewer.Source = bitmap;
+                        //BitmapImage bitmap = ByteArrayToBitmapImage(currSongArtwork); // ex: SystemException
+                        //imageViewer.Source = bitmap;
                     }
 
 
@@ -105,7 +105,7 @@ namespace Orangify
             }
         }
 
-        public static BitmapImage ByteArrayToBitmapImage(byte[] array)
+        /*public static BitmapImage ByteArrayToBitmapImage(byte[] array)
         {
             using (var ms = new MemoryStream(array))
             {
@@ -116,7 +116,7 @@ namespace Orangify
                 image.EndInit();
                 return image;
             }
-        }
+        }*/
 
 
 
