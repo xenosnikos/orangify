@@ -113,6 +113,7 @@ namespace Orangify
             SongList = Globals.ctx.Songs.ToList<Song>();
 
             Settings.Instance.cbSettingsLanguage.SelectedItem = Settings.Instance.setLanguage;
+            lblStatusCounter.Text = "Total Number of Songs: " + lvSongs.Items.Count;
         }
 
         private void miExit_Click(object sender, RoutedEventArgs e)

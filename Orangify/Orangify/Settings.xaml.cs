@@ -142,11 +142,12 @@ namespace Orangify
                 Globals.ctx.Songs.Add(song);
                 Globals.ctx.SaveChanges();
                 cbSettingsLanguage.SelectedValue = setLanguage;
-                Library.Instance.lblStatusCounter.Text = "Total Number of Songs: " + Library.Instance.lvSongs.Items.Count;
 
                 lvSettingsPaths.Items.Refresh();
                 //this.DialogResult = true;
+                
                 this.Close();
+                
             }
         }
 
@@ -182,8 +183,10 @@ namespace Orangify
                     try
                     {
                         pathList.Add(dialog.FileName);
+                        
 
                         lvSettingsPaths.Items.Refresh();
+                        
                     }
                     catch (InvalidOperationException ex)
                     {
@@ -191,7 +194,6 @@ namespace Orangify
                     }
                 }
             }
-
         }
 
         private void SettingsAddFolderBtn_Click(object sender, RoutedEventArgs e)
@@ -210,7 +212,9 @@ namespace Orangify
                     foreach (string s in files)
                     {
                         pathList.Add(s);
+                        
                         lvSettingsPaths.Items.Refresh();
+                        
                     }
                 }
             }
@@ -235,7 +239,7 @@ namespace Orangify
                 lblSettingsLibrarySource.Content = "Contenu";
                 btSettingsAddFolder.Content = "Ajouter Dossier";
                 btSettingsAddSong.Content = "Ajouter Chanson";
-                btSettingsAccept.Content = "Accepter";
+                btSettingsAccept.Content = "Ajouter";
 
                 Library.Instance.colSong.Header = "Chanson";
                 Library.Instance.colArtist.Header = "Artiste";
@@ -257,7 +261,7 @@ namespace Orangify
                 lblSettingsLibrarySource.Content = "Library Source";
                 btSettingsAddFolder.Content = "Add Folder to Library";
                 btSettingsAddSong.Content = "Add song to Library";
-                btSettingsAccept.Content = "Accept";
+                btSettingsAccept.Content = "Add to Library";
 
                 Library.Instance.colSong.Header = "Song";
                 Library.Instance.colArtist.Header = "Artist";
