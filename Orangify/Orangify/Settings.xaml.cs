@@ -106,25 +106,20 @@ namespace Orangify
                         existingAlbum = new Album { Name = album };
                     }
 
-
                 }
 
                 string filePath = pathList[i];
                 TimeSpan length = tfile.Properties.Duration;
                 Console.WriteLine("Title: {0}, duration: {1}", title, length);
 
-                Album albumObj = new Album { Name = album };
+                
                 byte[] songArtwork;
 
-                try
-                {
+               
                     MemoryStream ms = new MemoryStream(tfile.Tag.Pictures[0].Data.Data);
                     songArtwork = ms.ToArray();
-                }
-                catch (IndexOutOfRangeException ex)
-                {
-                    songArtwork = null;
-                }
+                
+               
 
 
 
