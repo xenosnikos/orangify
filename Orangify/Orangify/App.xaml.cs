@@ -15,7 +15,7 @@ namespace Orangify
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            Equalizer EQWindow = new Equalizer();
+            Equalizer EQWindow = Equalizer.Instance;
             EQWindow.Top = 20;
             EQWindow.Left = 730;
             EQWindow.Show();

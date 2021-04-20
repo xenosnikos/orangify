@@ -41,7 +41,7 @@
         <!-- COMMENT-->
 
 
-        <ListView  Name="lvSongs" MouseDoubleClick="clickclick" Margin="0,0,0,0.2" Width="1344" >
+        <ListView  Name="lvSongs" MouseDoubleClick="clickclick" Margin="0,0,0,0.2" Width="1344" BorderBrush="Orange" BorderThickness="5" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="colSong" Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>

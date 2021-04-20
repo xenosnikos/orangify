@@ -20,7 +20,24 @@ namespace Orangify
     /// Interaction logic for Equalizer.xaml
     /// </summary>
     public partial class Equalizer : Window
+
+
     {
+
+        private static Equalizer instance;
+
+        public static Equalizer Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Equalizer();
+                    return instance;
+                }
+                return instance;
+            }
+        }
         public Equalizer()
         {
             InitializeComponent();
