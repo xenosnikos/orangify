@@ -10,6 +10,7 @@ namespace Orangify
     public class PlayViewModel
     {
         public ICommand PlayCommand { get; set; }
+       
         public ICommand PauseCommand { get; set; }
 
         public ICommand NextSongCommand { get; set; }

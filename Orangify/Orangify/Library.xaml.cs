@@ -164,8 +164,12 @@ namespace Orangify
             et.Owner = this;
             if (et.ShowDialog() == true)
             {
-                
 
+
+            }
+            else
+            {
+                lvSongs.Items.Refresh();
             }
 
 

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="EditTag" Height="447.598" Width="832.028" Foreground="#FFF3E9E9" Background="#FF151515">
     <Grid Margin="0,0,2,2">
-        <TextBox Name="tbTitle" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="1"/>
+        <TextBox Name="tbTitle" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="1" TextChanged="tbTitle_TextChanged"/>
         <Button x:Name="btnDialogUpdate" Content="Update" IsEnabled="False" HorizontalAlignment="Left" Margin="61,0,0,0" VerticalAlignment="Top" Width="137"  Grid.Column="1" Grid.Row="5" Height="53" Click="btnDialogUpdate_Click"/>
         <Button x:Name="btnDialogDone" IsDefault="True" Content="Done" HorizontalAlignment="Left" Margin="51,10,0,0" VerticalAlignment="Top" Width="163"  Grid.Column="1" Height="52" Click="btnDialogDone_Click"/>
         <Label Content="Song Title: " HorizontalAlignment="Left" Margin="120,23,0,0" VerticalAlignment="Top" Grid.Row="1" Height="36" Width="144" FontSize="20"/>
@@ -25,9 +25,9 @@
                 <Image Name="imageViewer" Stretch="UniformToFill" Margin="-27,0,-31,0" Grid.RowSpan="2" />
             </Grid>
         </Button>
-        <TextBox Name="tbArtist" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="2"/>
-        <TextBox Name="tbAlbum" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="3"/>
-        <TextBox Name="tbYear" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="4"/>
+        <TextBox Name="tbArtist" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="2" TextChanged="tbArtist_TextChanged"/>
+        <TextBox Name="tbAlbum" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="3" TextChanged="tbAlbum_TextChanged"/>
+        <TextBox Name="tbYear" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="4" TextChanged="tbYear_TextChanged"/>
 
 
 

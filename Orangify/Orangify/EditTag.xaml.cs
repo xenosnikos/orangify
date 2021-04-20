@@ -42,15 +42,15 @@ namespace Orangify
 
         private void btnDialogUpdate_Click(object sender, RoutedEventArgs e)
         {
+            
 
             currentSong.Title = tbTitle.Text;
             currentSong.Artist.Name = tbArtist.Text;
-            currentSong.Album.Name = tbArtist.Text;
-            MemoryStream ms = new MemoryStream(currentSong.Artwork);
-
-            byte[] songArtwork = ms.ToArray();
-
-            currentSong.Artwork = songArtwork;
+            currentSong.Album.Name = tbAlbum.Text;
+            //MemoryStream ms = new MemoryStream(currentSong.Artwork);
+            //byte[] songArtwork = ms.ToArray();
+            //currentSong.Artwork = songArtwork;
+           
             Globals.ctx.SaveChanges();
             this.Close();
 
