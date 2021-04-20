@@ -51,7 +51,7 @@ namespace Orangify
 
             currentSong.Title = tbTitle.Text;
             currentSong.Artist.Name = tbArtist.Text;
-            currentSong.Album.Name = tbArtist.Text;
+            currentSong.Album.Name = tbAlbum.Text;
             if (currentSong.Artwork == null)
             {
                 return;

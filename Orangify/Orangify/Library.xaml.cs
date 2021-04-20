@@ -171,9 +171,9 @@ namespace Orangify
             }
             else
             {
-                lvSongs.Items.Refresh();
+                
             }
-
+            lvSongs.Items.Refresh();
 
         }
     }
