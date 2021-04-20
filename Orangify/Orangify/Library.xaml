@@ -34,7 +34,7 @@
                 TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                 Background="{DynamicResource MaterialDesignPaper}">
             <StatusBarItem>
-                <TextBlock Name="lblStatusCounter" Text="Total Number of Songs: "/>
+                <TextBlock x:Name="lblStatusCounter" Text="Total Number of Songs: "/>
             </StatusBarItem>
         </StatusBar>
         

@@ -142,6 +142,7 @@ namespace Orangify
                 Globals.ctx.Songs.Add(song);
                 Globals.ctx.SaveChanges();
                 cbSettingsLanguage.SelectedValue = setLanguage;
+                Library.Instance.lblStatusCounter.Text = "Total Number of Songs: " + Library.Instance.lvSongs.Items.Count;
 
                 lvSettingsPaths.Items.Refresh();
                 //this.DialogResult = true;

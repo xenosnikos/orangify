@@ -61,6 +61,7 @@ namespace Orangify
                 InitializeComponent();
                 Globals.ctx = new orangifyEntities1(); 
                 SongList = Globals.ctx.Songs.ToList<Song>();
+                lblStatusCounter.Text = "Total Number of Songs: " + lvSongs.Items.Count;
             }
             catch (Exception ex)
             {
@@ -154,6 +155,7 @@ namespace Orangify
             Globals.ctx.Songs.Remove(selSong);
             Globals.ctx.SaveChanges();
             lvSongs.ItemsSource = (from t in Globals.ctx.Songs select t).ToList<Song>();
+            lblStatusCounter.Text = "Total Number of Songs: " + lvSongs.Items.Count;
             lvSongs.Items.Refresh();
 
         }
