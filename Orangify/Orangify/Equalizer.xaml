@@ -19,7 +19,7 @@
         <Button
           Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="PRESETS" Margin="51,365,444.6,23" />
         <svl:Equalizer NumberOfBands="7" Margin="238,21,25,97" />
-        <Image HorizontalAlignment="Left" Height="200" Margin="10,21,0,0" VerticalAlignment="Top" Width="200" Source="orange.png"/>
+        <Image HorizontalAlignment="Left" Height="200" Margin="10,21,0,0" VerticalAlignment="Top" Width="200" Source="/img/orange.jpg"/>
         <Slider HorizontalAlignment="Left" Margin="320,377,0,0" VerticalAlignment="Top" Width="300" ValueChanged="Slider_ValueChanged" Height="32" Value="100"/>
         <!--
         <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Margin="549,2,9.6,28" Width="35" />
