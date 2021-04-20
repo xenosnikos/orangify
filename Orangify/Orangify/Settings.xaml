@@ -29,7 +29,7 @@
             </ListView.View>
         </ListView>
         <Button Content="Add song to Library" Name="btSettingsAddSong" HorizontalAlignment="Left" Margin="590,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFileBtn_Click"/>
-        <Button Content="Accept" Name="btSettingsAccept" HorizontalAlignment="Left" Margin="310,408,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAcceptBtn_Click"/>
+        <Button Content="Add to Library" Name="btSettingsAccept" HorizontalAlignment="Left" Margin="310,408,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAcceptBtn_Click"/>
         <Button Content="Add Folder to Library" Name="btSettingsAddFolder" HorizontalAlignment="Left" Margin="388,165,0,0" VerticalAlignment="Top" Width="180" Click="SettingsAddFolderBtn_Click" RenderTransformOrigin="0.637,0.491"/>
         <Button Content="X" x:Name="btSettingsX" HorizontalAlignment="Left" Margin="721,10,0,0" VerticalAlignment="Top" Width="49" Click="SettingsXBtn_Click"/>
     </Grid>

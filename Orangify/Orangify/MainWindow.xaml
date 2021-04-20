@@ -13,6 +13,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
+    BorderBrush="#FC6A03"
+        BorderThickness="10"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="MainWindow" Height="462" Width="700" ResizeMode="NoResize" WindowStyle="None" MouseDown="MainWindow_MouseDown"
         WindowStartupLocation="Manual" Left="20" Top="20" LocationChanged="MainWindow_LocationChanged">

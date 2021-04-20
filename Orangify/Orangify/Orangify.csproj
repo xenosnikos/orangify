@@ -228,6 +228,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="orange.jpg" />
     <Content Include="SongModelContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SongModelContext.edmx</DependentUpon>
