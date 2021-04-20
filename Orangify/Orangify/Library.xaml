@@ -44,11 +44,11 @@
         <ListView  Name="lvSongs" MouseDoubleClick="clickclick" Margin="0,0,0,0.2" Width="1344" BorderBrush="Orange" BorderThickness="5" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="colSong" Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>
-                    <GridViewColumn x:Name="colArtist" Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist.Name}"/>
-                    <GridViewColumn x:Name="colAlbum" Header="Album" Width="300"  DisplayMemberBinding="{Binding Album.Name}"/>
+                    <GridViewColumn x:Name="colSong" Header="Song" Width="500" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn x:Name="colArtist" Header="Artist" Width="350"  DisplayMemberBinding="{Binding Artist.Name}"/>
+                    <GridViewColumn x:Name="colAlbum" Header="Album" Width="350"  DisplayMemberBinding="{Binding Album.Name}"/>
                     <!-- <GridViewColumn x:Name="colYear" Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased.Year}"/> -->
-                    <GridViewColumn x:Name="colLength" Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
+                    <GridViewColumn x:Name="colLength" Header="Length" Width="200"  DisplayMemberBinding="{Binding Length,StringFormat=mm\\:ss}"/>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>
