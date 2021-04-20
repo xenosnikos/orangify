@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Orangify"
         mc:Ignorable="d"
-        Title="EditTag" Height="447.598" Width="832.028" Foreground="#FFF3E9E9" Background="#FF151515">
+        BorderBrush="#FC6A03"
+        BorderThickness="10"
+        Title="EditTag" Height="447.598" Width="832.028" Foreground="#FFF3E9E9" Background="#FF151515" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseDown="EditTagWindow_MouseDown" ResizeMode="NoResize">
     <Grid Margin="0,0,2,2">
         <TextBox Name="tbTitle" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" RenderTransformOrigin="0.705,0.993" Grid.Column="1" Grid.Row="1" TextChanged="tbTitle_TextChanged"/>
         <Button x:Name="btnDialogUpdate" Content="Update" IsEnabled="False" HorizontalAlignment="Left" Margin="61,0,0,0" VerticalAlignment="Top" Width="137"  Grid.Column="1" Grid.Row="5" Height="53" Click="btnDialogUpdate_Click"/>

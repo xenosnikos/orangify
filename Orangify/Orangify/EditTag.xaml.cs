@@ -32,16 +32,17 @@ namespace Orangify
             tbArtist.Text = song.Artist.Name.ToString();
             tbAlbum.Text = song.Album.Name.ToString();
             tbYear.Text = song.YearReleased.Value.Year.ToString();
-            
+
             if (currSongArtwork == null)
             {
                 imageViewer.Source = null;
-            } else
+            }
+            else
             {
                 imageViewer.Source = ByteArrayToBitmapImage(song.Artwork);
             }
-            
-            
+
+
         }
 
 
@@ -55,7 +56,8 @@ namespace Orangify
             if (currentSong.Artwork == null)
             {
                 return;
-            } else
+            }
+            else
             {
                 MemoryStream ms = new MemoryStream(currentSong.Artwork);
 
@@ -64,7 +66,7 @@ namespace Orangify
                 currentSong.Artwork = songArtwork;
             }
 
-            
+
             Globals.ctx.SaveChanges();
             this.Close();
 
@@ -76,7 +78,7 @@ namespace Orangify
         }
 
         byte[] currSongArtwork;
-        
+
         public void btnImage_Click(object sender, RoutedEventArgs e)
         {
 
@@ -84,22 +86,24 @@ namespace Orangify
             dlg.Filter = "Image files (*.jpg;*.jpeg;*.gif;*.png)|*.jpg;*.jpeg;*.gif;*.png|All Files (*.*)|*.*";
             // dlg.RestoreDirectory = true;
 
-            if(dlg.ShowDialog() == true) { 
-            
+            if (dlg.ShowDialog() == true)
+            {
+
                 try
                 {
                     currSongArtwork = File.ReadAllBytes(dlg.FileName); // ex IOException
                     tbImage.Visibility = Visibility.Hidden; // hide text on the button
-                    if(currSongArtwork == null)
+                    if (currSongArtwork == null)
                     {
                         imageViewer.Source = null;
-                    } else
+                    }
+                    else
                     {
                         BitmapImage bitmap = ByteArrayToBitmapImage(currSongArtwork); // ex: SystemException
                         imageViewer.Source = bitmap;
                     }
-                    
-                    
+
+
                 }
                 catch (Exception ex) when (ex is SystemException || ex is IOException)
                 {
@@ -110,15 +114,15 @@ namespace Orangify
 
         public static BitmapImage ByteArrayToBitmapImage(byte[] array)
         {
-                using (var ms = new MemoryStream(array))
-                {
-                    var image = new BitmapImage();
-                    image.BeginInit();
-                    image.CacheOption = BitmapCacheOption.OnLoad; // here
-                    image.StreamSource = ms;
-                    image.EndInit();
-                    return image;
-                }
+            using (var ms = new MemoryStream(array))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad; // here
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
+            }
         }
 
 
@@ -143,5 +147,12 @@ namespace Orangify
             btnDialogUpdate.IsEnabled = true;
         }
 
+        private void EditTagWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }
