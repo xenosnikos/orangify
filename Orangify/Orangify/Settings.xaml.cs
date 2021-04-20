@@ -240,7 +240,7 @@ namespace Orangify
                 Library.Instance.colSong.Header = "Chanson";
                 Library.Instance.colArtist.Header = "Artiste";
                 Library.Instance.colLength.Header = "Durée";
-                Library.Instance.colYear.Header = "Année";
+                //Library.Instance.colYear.Header = "Année";
                 Library.Instance.miFile.Header = "Fichier";
                 Library.Instance.miSettings.Header = "Paramètres";
                 Library.Instance.miExit.Header = "Quitter";
@@ -262,7 +262,7 @@ namespace Orangify
                 Library.Instance.colSong.Header = "Song";
                 Library.Instance.colArtist.Header = "Artist";
                 Library.Instance.colLength.Header = "Length";
-                Library.Instance.colYear.Header = "Year";
+                //Library.Instance.colYear.Header = "Year";
                 Library.Instance.miFile.Header = "File";
                 Library.Instance.miSettings.Header = "Settings";
                 Library.Instance.miExit.Header = "Quit";

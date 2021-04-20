@@ -37,7 +37,7 @@
                 <TextBlock x:Name="lblStatusCounter" Text="Total Number of Songs: "/>
             </StatusBarItem>
         </StatusBar>
-        
+
         <!-- COMMENT-->
 
 
@@ -47,7 +47,7 @@
                     <GridViewColumn x:Name="colSong" Header="Song" Width="400" DisplayMemberBinding="{Binding Title}"/>
                     <GridViewColumn x:Name="colArtist" Header="Artist" Width="300"  DisplayMemberBinding="{Binding Artist.Name}"/>
                     <GridViewColumn x:Name="colAlbum" Header="Album" Width="300"  DisplayMemberBinding="{Binding Album.Name}"/>
-                    <GridViewColumn x:Name="colYear" Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased.Year}"/>
+                    <!-- <GridViewColumn x:Name="colYear" Header="Year" Width="200" DisplayMemberBinding="{Binding YearReleased.Year}"/> -->
                     <GridViewColumn x:Name="colLength" Header="Length" Width="200"  DisplayMemberBinding="{Binding Length}"/>
                 </GridView>
             </ListView.View>
